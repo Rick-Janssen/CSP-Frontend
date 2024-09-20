@@ -1,0 +1,29 @@
+.Header > div{
+   
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: min-content;
+    padding-top: 10vh;
+    gap: 10vw;
+}
+.Header{
+    height: 100vh;
+    background-color: #ffff;
+}
+.imageContainer{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    
+}
+
+h1{
+    font-size: 150px;
+    color: #193F73;
+    
+    
+    
+    /* -webkit-text-stroke: 3px  #193F73; */
+}
