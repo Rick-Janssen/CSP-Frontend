@@ -1,11 +1,18 @@
 import "./App.css";
-import React from "react";
-import DetailsPage from "./components/DetailsPage/DetailsPage";
-function App() {
-  return ( <>
-   <DetailsPage></DetailsPage>
-  </>
-  );
-}
+import Header from "./components/Header/header";
+import Navbar from "./components/Navbar/Navbar";
+import ProductList from "./components/ProductList/ProductList";
 
+const App = () =>{
+  return ( 
+     <>
+      <Navbar/>
+      <Header/>
+      <ProductList/>
+    </>
+
+   );
+
+}
 export default App;
+

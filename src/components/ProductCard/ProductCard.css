@@ -1,0 +1,29 @@
+.ProductCard{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 200px;
+  } .image-box{
+    height: 200px;
+    width: 200px;
+    background-color:  #aaa7a7;
+  } .product-description{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-style: italic;
+  }
+  .product-showcase {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #938d8d;
+    max-width: 1320px; 
+    margin: 44px auto; 
+    padding: 22px; 
+    border-radius: 11px; 
+  }
+  .product-hr{
+    height: 1px;
+    border: solid #333 ;
+    background-color: #333;
+  }
