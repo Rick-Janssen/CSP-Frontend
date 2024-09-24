@@ -13,7 +13,7 @@ function Navbar() {
   return (
     <>
       <nav className={navClass}>
-        <img className="LogoPng" src="./pic/FlagFlaggyLogo.png" />
+        <img className="LogoPng" alt="Logo" src="./pic/FlagFlaggyLogo.png" />
         <div className="nav-content">
           <div className="logo">
             <a href="./">Idk man</a>
