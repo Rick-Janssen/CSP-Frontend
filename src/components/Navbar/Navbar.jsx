@@ -12,12 +12,12 @@ function navbar() {
   return (
     <>
       <nav>
-        <img class="LogoPng" src="./pic/FlagFlaggyLogo.png" />
-        <div class="nav-content">
-          <div class="logo">
+        <img className="LogoPng" src="./pic/FlagFlaggyLogo.png" />
+        <div className="nav-content">
+          <div className="logo">
             <a href="./">Idk man</a>
           </div>
-          <ul class="nav-links">
+          <ul className="nav-links">
             <li>
               <a href="/">Home</a>
             </li>
@@ -35,14 +35,14 @@ function navbar() {
             </li>
 
             <li>
-              <a href="register" class="Formbutton">
+              <a href="register" className="Formbutton">
                 Login
               </a>
             </li>
           </ul>
         </div>
       </nav>
-      <section class="home"></section>
+      <section className="home"></section>
     </>
   );
 }
