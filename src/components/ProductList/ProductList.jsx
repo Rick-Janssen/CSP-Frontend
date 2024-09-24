@@ -1,22 +1,6 @@
-<<<<<<< HEAD
-import ProductCard from "../ProductCard/ProductCard.jsx";
-import "./ProductList.css";
-const ProductList = () => {
-
-    // const items = localStorage.getItem("token");
-    return(
-        <div className="ProductList">
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
-=======
 import React, { useEffect, useState } from 'react';
 import './ProductList.css'; // Import your CSS styles
+import ProductCard from '../ProductCard/ProductCard';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]); // State for all products
@@ -70,10 +54,6 @@ const ProductList = () => {
 
     return (
         <div>
->>>>>>> b4050920261d9ffff55e35f40005caed54f01607
-
-
-
             <div className="filter-section">
                 <input
                     type="text"
@@ -91,27 +71,30 @@ const ProductList = () => {
             </div>
 
             <div id="product-list">
+                {console.log(products)}
                 {filteredProducts.map(product => (
-                    <div
-                        key={product.id}
-                        className="product"
-                        onClick={() => window.location.href = `product-details.html?id=${product.id}`}
-                    >
-                        <img src={product.image_url} alt={product.name} />
-                        <div className="details">
-                            <h2>{product.name}</h2>
-                            <p><strong>Origin:</strong> {product.origin}</p>
-                            <p><strong>Type:</strong> {product.type}</p>
-                        </div>
-                        <div className="rating">
-                            {/* Render stars based on rating */}
-                            {Array.from({ length: 5 }, (_, index) => (
-                                <span key={index} className="star">
-                                    {index < product.rating ? '★' : '☆'}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+                    <ProductCard id={product.id} image={product.image_url} name={product.name} type={product.origin} country={product.type} stars={product.rating} />
+
+                    // <div
+                    //     key={product.id}
+                    //     className="product"
+                    //     onClick={() => window.location.href = `product-details.html?id=${product.id}`}
+                    // >   
+                    //     <img src={product.image_url} alt={product.name} />
+                    //     <div className="details">
+                    //         <h2>{product.name}</h2>
+                    //         <p><strong>Origin:</strong> {product.origin}</p>
+                    //         <p><strong>Type:</strong> {product.type}</p>
+                    //     </div>
+                    //     <div className="rating">
+                    //         {/* Render stars based on rating */}
+                    //         {Array.from({ length: 5 }, (_, index) => (
+                    //             <span key={index} className="star">
+                    //                 {index < product.rating ? '★' : '☆'}
+                    //             </span>
+                    //         ))}
+                    //     </div>
+                    // </div>
                 ))}
             </div>
 

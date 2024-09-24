@@ -6,17 +6,24 @@
     height: 200px;
     width: 200px;
     background-color:  #aaa7a7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   } .product-description{
     display: flex;
     justify-content: space-between;
     font-size: 13px;
     font-style: italic;
   }
+  .product-info{
+    display: flex;
+    justify-content: space-between;
+  }
   .product-showcase {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-color: #938d8d;
+  
     max-width: 1320px; 
     margin: 44px auto; 
     padding: 22px; 
@@ -26,4 +33,10 @@
     height: 1px;
     border: solid #333 ;
     background-color: #333;
+  }
+  img{
+    max-height: 200px;
+    max-width: 200px;
+   
+    object-fit:contain;
   }
