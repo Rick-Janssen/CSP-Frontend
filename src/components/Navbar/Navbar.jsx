@@ -1,6 +1,6 @@
 import './Navbar.css'
 
-function navbar() {
+function Navbar() {
   let nav = document.querySelector("nav");
   window.onscroll = function () {
     if (document.documentElement.scrollTop > 20) {
@@ -46,4 +46,4 @@ function navbar() {
     </>
   );
 }
-export default navbar
+export default Navbar;
