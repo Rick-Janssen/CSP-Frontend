@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './Navbar.css'
 
-function Navbar() { 
-  const [navClass,setNavClass ] = useState("");
+function Navbar() {
+  const [navClass, setNavClass] = useState("");
   window.onscroll = function () {
     if (document.documentElement.scrollTop > 20) {
-     setNavClass("sticky");
+      setNavClass("sticky");
     } else {
       setNavClass("");
     }
