@@ -15,8 +15,7 @@ const ChangingImage = ({isDutch, startIndex}) => {
         
          "https://dobro.hr/wp-content/uploads/2017/01/prsut-dobro-web-800x665.png",
         
-        "https://www.zagreb.info/wp-content/uploads/2017/02/16806907_1744022382576919_7000798493469960728_n.jpg",
-        
+        "https://d2cy8nwqmyqij1.cloudfront.net/images/products/burek-motani-s-jabukama-150g/burek-motani-s-jabukama-150g.png",        
         "https://www.cedevita.com/var/site/storage/images/naslovnica/proizvodi/naranca/200g/6469-6-cro-HR/200g.png"];
 
     

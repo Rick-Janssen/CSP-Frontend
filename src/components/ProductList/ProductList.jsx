@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+import ProductCard from "../ProductCard/ProductCard.jsx";
+import "./ProductList.css";
+const ProductList = () => {
+
+    // const items = localStorage.getItem("token");
+    return(
+        <div className="ProductList">
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+            <ProductCard image={"A"} name= {"A"} type={"A"} country={"A"} stars={"A"}></ProductCard>
+=======
 import React, { useEffect, useState } from 'react';
 import './ProductList.css'; // Import your CSS styles
 
@@ -53,6 +70,7 @@ const ProductList = () => {
 
     return (
         <div>
+>>>>>>> b4050920261d9ffff55e35f40005caed54f01607
 
 
 
