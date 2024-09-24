@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './Navbar.css'
 
-function Navbar() { 
-  const [navClass,setNavClass ] = useState("");
+function Navbar() {
+  const [navClass, setNavClass] = useState("");
   window.onscroll = function () {
     if (document.documentElement.scrollTop > 20) {
-     setNavClass("sticky");
+      setNavClass("sticky");
     } else {
       setNavClass("");
     }
@@ -13,7 +13,11 @@ function Navbar() {
   return (
     <>
       <nav className={navClass}>
+<<<<<<< HEAD
         <img className="LogoPng" src="./pic/FlagFlaggyLogo.png" />
+=======
+        <img className="LogoPng" alt="Logo" src="./pic/FlagFlaggyLogo.png" />
+>>>>>>> 7228d1b8c33290f7280dde9cfd3875e94393d4fc
         <div className="nav-content">
           <div className="logo">
             <a href="./">Idk man</a>

@@ -54,6 +54,12 @@ const ProductList = () => {
 
     return (
         <div>
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 7228d1b8c33290f7280dde9cfd3875e94393d4fc
             <div className="filter-section">
                 <input
                     type="text"
