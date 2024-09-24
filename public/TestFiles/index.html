@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         /* Navbar */
         .navbar {
             background-color: #333;
@@ -23,12 +24,14 @@
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .navbar a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
         }
+
         .navbar a:hover {
             text-decoration: underline;
         }
@@ -48,6 +51,7 @@
             text-align: center;
             margin: 20px 0;
         }
+
         .filter-section input {
             padding: 10px;
             width: 300px;
@@ -55,9 +59,11 @@
             border-radius: 4px;
             margin-right: 10px;
         }
+
         .filter-buttons {
             margin-top: 10px;
         }
+
         .filter-buttons button {
             padding: 10px 15px;
             border: none;
@@ -67,6 +73,7 @@
             cursor: pointer;
             margin-left: 5px;
         }
+
         .filter-buttons button:hover {
             background-color: #0056b3;
         }
@@ -90,29 +97,37 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             transition: transform 0.3s;
-            height: 350px; /* Fixed height for card */
+            height: 350px;
+            /* Fixed height for card */
             position: relative;
         }
+
         .product:hover {
             transform: scale(1.03);
         }
+
         .product img {
             width: 100%;
-            height: 150px; /* Fixed height for images */
-            object-fit: contain; /* Fit image into the box */
+            height: 150px;
+            /* Fixed height for images */
+            object-fit: contain;
+            /* Fit image into the box */
             border-bottom: 1px solid #ddd;
         }
+
         .product .details {
             flex: 1;
             padding: 15px;
             display: flex;
             flex-direction: column;
         }
+
         .product h2 {
             font-size: 1.5rem;
             margin: 0;
             color: #333;
         }
+
         .product p {
             margin: 5px 0;
             color: #666;
@@ -129,6 +144,7 @@
             width: 100%;
             background-color: #f9f9f9;
         }
+
         .star {
             font-size: 1.5rem;
             color: #ffc107;
@@ -151,6 +167,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -180,13 +197,13 @@
     <footer>
         <p>&copy; 2024 Product Rating Site. All rights reserved.</p>
     </footer>
-    
+
     <script>
         let products = []; // Store fetched products
-    
+
         // Function to fetch products from the backend
         function fetchProducts() {
-            fetch('http://localhost/csp-backend/products')
+            fetch('http://192.168.45.164/csp-backend/products')
                 .then(response => response.json())
                 .then(data => {
                     products = data; // Save products for filtering
@@ -196,16 +213,16 @@
                     console.error('Error fetching products:', error);
                 });
         }
-    
+
         // Function to display products
         function displayProducts(productsToDisplay) {
             const productList = document.getElementById('product-list');
             productList.innerHTML = '';  // Clear existing content
-    
+
             productsToDisplay.forEach(product => {
                 const productDiv = document.createElement('div');
                 productDiv.classList.add('product');
-    
+
                 // Add product details and make it clickable
                 productDiv.innerHTML = `
                     <img src="${product.image_url}" alt="${product.name}">
@@ -222,48 +239,48 @@
                         <span class="star">&#9734;</span> <!-- Sample 4/5 stars -->
                     </div>
                 `;
-    
                 // Make the entire product div clickable to go to the product detail page
                 productDiv.addEventListener('click', () => {
                     window.location.href = `product-details.html?id=${product.id}`; // Pass product ID as query param
                 });
-    
+
                 productList.appendChild(productDiv);
             });
         }
-    
+
         // Function to filter products
         function filterProducts(type) {
-    const searchQuery = document.getElementById('search-bar').value.toLowerCase();
-    let filteredProducts = products;
+            const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+            let filteredProducts = products;
 
-    // Filter by type
-    if (type !== 'all') {
-        filteredProducts = filteredProducts.filter(product => 
-            product.type && product.type.toLowerCase() === type.toLowerCase()
-        );
-    }
+            // Filter by type
+            if (type !== 'all') {
+                filteredProducts = filteredProducts.filter(product =>
+                    product.type && product.type.toLowerCase() === type.toLowerCase()
+                );
+            }
 
-    // Filter by search query
-    if (searchQuery) {
-        filteredProducts = filteredProducts.filter(product => 
-            (product.name && product.name.toLowerCase().includes(searchQuery)) ||
-            (product.content && product.content.toLowerCase().includes(searchQuery))
-        );
-    }
+            // Filter by search query
+            if (searchQuery) {
+                filteredProducts = filteredProducts.filter(product =>
+                    (product.name && product.name.toLowerCase().includes(searchQuery)) ||
+                    (product.description && product.description.toLowerCase().includes(searchQuery))
+                );
+            }
 
-    displayProducts(filteredProducts);
-}
+            displayProducts(filteredProducts);
+        }
 
-    
+
         // Event listener for search bar
         document.getElementById('search-bar').addEventListener('input', () => {
             filterProducts('all'); // Filter when user types in the search bar
         });
-    
+
         // Initial fetch of products
         fetchProducts();
     </script>
 
 </body>
+
 </html>
