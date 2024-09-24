@@ -12,12 +12,8 @@ function Navbar() {
   };
   return (
     <>
-<<<<<<< HEAD
-      <nav>
-=======
       <nav className={navClass}>
->>>>>>> b4050920261d9ffff55e35f40005caed54f01607
-        <img className="LogoPng" src="./pic/FlagFlaggyLogo.png" />
+        <img className="LogoPng" alt="Logo" src="./pic/FlagFlaggyLogo.png" />
         <div className="nav-content">
           <div className="logo">
             <a href="./">Idk man</a>
