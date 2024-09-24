@@ -1,49 +1,64 @@
-import './Navbar.css'
+import React, { useEffect, useState } from 'react';
+import './Navbar.css';
+import Logo from "../../assets/FlagFlaggyLogo.png";
+
 
 function Navbar() {
-  // let nav = document.querySelector("nav");
-  // window.onscroll = function () {
-  //   if (document.documentElement.scrollTop > 20) {
-  //     nav.classList.add("sticky");
-  //   } else {
-  //     nav.classList.remove("sticky");
-  //   }
-  // };
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav>
-        <img class="LogoPng" src="./pic/FlagFlaggyLogo.png" />
-        <div class="nav-content">
-          <div class="logo">
-            <a href="./">Idk man</a>
+      <nav className={isSticky ? 'sticky' : ''}>
+        <img className="LogoPng" src={Logo} alt="Logo" />
+        <div className="nav-content">
+          <div className="logo">
+            <a href="./">Rater</a>
           </div>
-          <ul class="nav-links">
+          <ul className="nav-links">
             <li>
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="bier">products</a>
+              <a href="bier">Products</a>
             </li>
             <li>
-              <a href="#">mosted rated</a>
+              <a href="#">Most Rated</a>
             </li>
             <li>
-              <a href="#">About us</a>
+              <a href="#">About Us</a>
             </li>
             <li>
               <a href="#">Contact</a>
             </li>
-
             <li>
-              <a href="register" class="Formbutton">
+              <a href="register" className="Formbutton">
                 Login
               </a>
             </li>
           </ul>
         </div>
       </nav>
-      <section class="home"></section>
+      <section className="home"></section>
+
+      <div className='H'></div>
     </>
   );
 }
+
 export default Navbar;

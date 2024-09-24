@@ -7,6 +7,7 @@
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Ubuntu', sans-serif;
+
 }
 
 nav {
@@ -44,16 +45,13 @@ nav .logo a {
 
 .LogoPng {
   width: 140px;
+  height: 160px;
   left: -20px;
   top: -8px;
   position: absolute;
   overflow-y: hidden;
 }
 
-nav.sticky .LogoPng {
-  opacity: 10%;
-
-}
 
 nav.sticky .logo a {
   color: #fff;
@@ -99,3 +97,4 @@ h2 {
   text-align: justify;
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
 }
+
