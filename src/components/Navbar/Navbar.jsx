@@ -1,22 +1,18 @@
 import { useState } from 'react';
 import './Navbar.css'
 
-function Navbar() { 
-  const [navClass,setNavClass ] = useState("");
+function Navbar() {
+  const [navClass, setNavClass] = useState("");
   window.onscroll = function () {
     if (document.documentElement.scrollTop > 20) {
-     setNavClass("sticky");
+      setNavClass("sticky");
     } else {
       setNavClass("");
     }
   };
   return (
     <>
-<<<<<<< HEAD
-      <nav>
-=======
       <nav className={navClass}>
->>>>>>> b4050920261d9ffff55e35f40005caed54f01607
         <img className="LogoPng" src="./pic/FlagFlaggyLogo.png" />
         <div className="nav-content">
           <div className="logo">
