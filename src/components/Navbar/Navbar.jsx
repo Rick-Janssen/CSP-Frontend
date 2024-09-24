@@ -1,23 +1,24 @@
+import { useState } from 'react';
 import './Navbar.css'
 
-function Navbar() {
-  // let nav = document.querySelector("nav");
-  // window.onscroll = function () {
-  //   if (document.documentElement.scrollTop > 20) {
-  //     nav.classList.add("sticky");
-  //   } else {
-  //     nav.classList.remove("sticky");
-  //   }
-  // };
+function Navbar() { 
+  const [navClass,setNavClass ] = useState("");
+  window.onscroll = function () {
+    if (document.documentElement.scrollTop > 20) {
+     setNavClass("sticky");
+    } else {
+      setNavClass("");
+    }
+  };
   return (
     <>
-      <nav>
-        <img class="LogoPng" src="./pic/FlagFlaggyLogo.png" />
-        <div class="nav-content">
-          <div class="logo">
+      <nav className={navClass}>
+        <img className="LogoPng" src="./pic/FlagFlaggyLogo.png" />
+        <div className="nav-content">
+          <div className="logo">
             <a href="./">Idk man</a>
           </div>
-          <ul class="nav-links">
+          <ul className="nav-links">
             <li>
               <a href="/">Home</a>
             </li>
@@ -35,14 +36,14 @@ function Navbar() {
             </li>
 
             <li>
-              <a href="register" class="Formbutton">
+              <a href="register" className="Formbutton">
                 Login
               </a>
             </li>
           </ul>
         </div>
       </nav>
-      <section class="home"></section>
+      <section className="home"></section>
     </>
   );
 }
