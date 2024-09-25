@@ -7,6 +7,7 @@ import Register from "./pages/Login/Register";
 import Login from "./pages/Login/Login";
 import ProductList from "./components/ProductList/ProductList";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
+import DetailsPage from "./components/DetailsPage/DetailsPage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/" element={<HomePage />} />
+      <Route path="product/:id" element={<DetailsPage />} />
       <Route element={<ProtectedRoutes />}>
         {/* <Route path="/admin" element={<Admin />} /> */}
       </Route>

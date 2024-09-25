@@ -95,7 +95,7 @@ const ProductList = () => {
                     <div
                         key={product.id}
                         className="product"
-                        onClick={() => window.location.href = `product-details.html?id=${product.id}`}
+                        onClick={() => window.location.href = `product/${product.id}`}
                     >
                         <img src={product.image_url} alt={product.name} />
                         <div className="details">
