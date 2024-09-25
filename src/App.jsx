@@ -8,10 +8,14 @@ import Login from "./pages/Login/Login";
 import ProductList from "./components/ProductList/ProductList";
 
 const App = () =>{
-  return ( 
-    <Routes>
-      <Route path="/" element={<Login />} /> 
-    </Routes>
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="login" element={<Login />} /> 
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </> 
 
   );
 

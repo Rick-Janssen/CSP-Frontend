@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import Logo from "../../assets/FlagFlaggyLogo.png";
+import {Link} from 'react-router-dom';
 
 
 function Navbar() {
@@ -28,28 +29,28 @@ function Navbar() {
         <img className="LogoPng" src={Logo} alt="Logo" />
         <div className="nav-content">
           <div className="logo">
-            <a href="./">Rater</a>
+            <Link to="/">Rater</Link>
           </div>
           <ul className="nav-links">
             <li>
-              <a href="/">Home</a>
+              <Link to="/">HomePage</Link>
             </li>
             <li>
-              <a href="bier">Products</a>
+              <Link to="/">Products</Link>  
             </li>
             <li>
-              <a href="#">Most Rated</a>
+              <Link to="#">Most Rated</Link>
             </li>
             <li>
-              <a href="#">About Us</a>
+              <Link to="#">About us</Link>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <Link to="#">Contact</Link>
             </li>
             <li>
-              <a href="register" className="Formbutton">
+              <Link to="login" className="Formbutton">
                 Login
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
