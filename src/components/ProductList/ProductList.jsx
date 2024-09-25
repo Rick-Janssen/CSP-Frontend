@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ProductList.css'; // Import your CSS styles
-
+import ProductCard from "../ProductCard/ProductCard";
 const ProductList = () => {
     const [products, setProducts] = useState([]); // State for all products
     const [filteredProducts, setFilteredProducts] = useState([]); // State for filtered products
@@ -89,26 +89,27 @@ const ProductList = () => {
 
             <div id="product-list">
                 {filteredProducts.map(product => (
-                    <div
-                        key={product.id}
-                        className="product"
-                        onClick={() => window.location.href = `product/${product.id}`}
-                    >
-                        <img src={product.image_url} alt={product.name} />
-                        <div className="details">
-                            <h2>{product.name}</h2>
-                            <p><strong>Origin:</strong> {product.origin}</p>
-                            <p><strong>Type:</strong> {product.type}</p>
-                        </div>
-                        <div className="rating">
-                            {/* Render stars based on rating */}
-                            {Array.from({ length: 5 }, (_, index) => (
-                                <span key={index} className="star">
-                                    {index < product.rating ? '★' : '☆'}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+                    <ProductCard product={product} />
+                    // <div
+                    //     key={product.id}
+                    //     className="product"
+                    //     onClick={() => window.location.href = `product/${product.id}`}
+                    // >
+                    //     <img src={product.image_url} alt={product.name} />
+                    //     <div className="details">
+                    //         <h2>{product.name}</h2>
+                    //         <p><strong>Origin:</strong> {product.origin}</p>
+                    //         <p><strong>Type:</strong> {product.type}</p>
+                    //     </div>
+                    //     <div className="rating">
+                    //         {/* Render stars based on rating */}
+                    //         {Array.from({ length: 5 }, (_, index) => (
+                    //             <span key={index} className="star">
+                    //                 {index < product.rating ? '★' : '☆'}
+                    //             </span>
+                    //         ))}
+                    //     </div>
+                    // </div>
                 ))}
             </div>
             <button onClick={logout}>Logout</button>

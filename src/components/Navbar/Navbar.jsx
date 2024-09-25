@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import Logo from "../../assets/FlagFlaggyLogo.png";
+import useCheckLogin from '../../utils/CheckLogin'; // Adjust the import to match your file structure
 import { Link } from 'react-router-dom';
-
 
 function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
+  const isAuthenticated = useCheckLogin(); // Get authentication state
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
+      setIsSticky(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -32,7 +28,6 @@ function Navbar() {
             <Link to="/">Rater</Link>
           </div>
           <ul className="nav-links">
-
             <li>
               <Link to="/home">Products</Link>
             </li>
@@ -43,15 +38,20 @@ function Navbar() {
               <Link to="#">About us</Link>
             </li>
             <li>
-              <Link to="/login" className="Formbutton">
-                Login
-              </Link>
+              {isAuthenticated ? (
+                <Link to="/logout" className="Formbutton">
+                  Logout
+                </Link>
+              ) : (
+                <Link to="/login" className="Formbutton">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>
       </nav>
       <section className="home"></section>
-
       <div className='H'></div>
     </>
   );
