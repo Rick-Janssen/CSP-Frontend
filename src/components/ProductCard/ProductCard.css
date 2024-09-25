@@ -9,15 +9,9 @@
   } .image-box{
     height: 200px;
     width: 200px;
-<<<<<<< HEAD
     display: flex;
     align-items: center;
     justify-content: center;
-=======
-    background-color:  #aaa7a7;
-    border-radius: 11px;
-    
->>>>>>> dcf1940ab589e9b6a90c9539648082cb41576c28
   } .product-description{
     display: flex;
     justify-content: space-between;
