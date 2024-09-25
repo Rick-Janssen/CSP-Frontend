@@ -6,11 +6,16 @@ import HomePage from "./pages/HomePage/HomePage";
 import Register from "./pages/Login/Register";
 import Login from "./pages/Login/Login";
 import ProductList from "./components/ProductList/ProductList";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 
-const App = () =>{
-  return ( 
+const App = () => {
+  return (
     <Routes>
-      <Route path="/" element={<Login />} /> 
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<HomePage />} />
+      <Route element={<ProtectedRoutes />}>
+        {/* <Route path="/admin" element={<Admin />} /> */}
+      </Route>
     </Routes>
 
   );

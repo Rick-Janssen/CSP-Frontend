@@ -9,10 +9,8 @@ const Login = () => {
   const [password, SetPassword] = useState('');
 
   function handleSubmit(e) {
-    // Prevent the browser from reloading the page
-    e.preventDefault();
 
-    // Read the form data
+    e.preventDefault();
 
 
     fetch('http://192.168.45.164/csp-backend/login', {
@@ -29,6 +27,7 @@ const Login = () => {
       .then(data => {
         if (data.token) {
           localStorage.setItem('token', data.token);
+          window.location.href = "/";
         } else {
           console.log('Login failed:', data.message);
         }

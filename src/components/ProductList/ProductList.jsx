@@ -51,6 +51,24 @@ const ProductList = () => {
         filterProducts();
     }, [searchQuery, typeFilter, products]);
 
+    function logout() {
+        fetch('http://192.168.45.164/csp-backend/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+
+                if (data.message === "Logged out successfully") {
+
+                    localStorage.removeItem('token');
+                }
+            });
+    }
+
     return (
         <div>
 
@@ -96,6 +114,7 @@ const ProductList = () => {
                     </div>
                 ))}
             </div>
+            <button onClick={logout}>Logout</button>
 
             <footer>
                 <p>&copy; 2024 Product Rating Site. All rights reserved.</p>
