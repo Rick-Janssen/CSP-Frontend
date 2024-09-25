@@ -13,7 +13,7 @@ const DetailsPage = () => {
   const [hoverRating, setHoverRating] = useState(0); // for hover effect
 
   const fetchProductDetails = () => {
-    fetch(`http://192.168.45.164/csp-backend/product/${id}`)
+    fetch(`http://localhost/csp-backend/product/${id}`)
       .then(response => response.json())
       .then(data => {
         setProduct(data);
@@ -36,7 +36,7 @@ const DetailsPage = () => {
       rating: rating,
     };
 
-    fetch(`http://192.168.45.164/csp-backend/product/${id}/review`, {
+    fetch(`http://localhost/csp-backend/product/${id}/review`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,6 +51,10 @@ const DetailsPage = () => {
       })
       .then(data => {
         console.log('Review submitted successfully:', data);
+        // Reset the review and rating inputs
+        setReview(''); // Clear the review textarea
+        setRating(0); // Reset the rating to 0
+        fetchProductDetails(); // Optionally refresh product details to include the new review
         setReview('');
         setRating(0);
         setHoverRating(0); // Reset hover rating as well
@@ -136,6 +140,23 @@ const DetailsPage = () => {
           </div>
           <button type="submit" className="submit-button">SUBMIT</button>
         </form>
+      </div>
+
+      <div className='product-card'>
+        <div className="reviews">
+          <h2>OTHER REVIEWS</h2>
+          {product && product.reviews && product.reviews.length > 0 ? (
+            product.reviews.map((review, index) => (
+              <div className="review" key={index}>
+                {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                <span style={{ float: 'right' }} >{review.user_id || "Anonymous"}</span>
+                <p>{review.content}</p>
+              </div>
+            ))
+          ) : (
+            <p>No reviews yet.</p>
+          )}
+        </div>
       </div>
     </div>
   );

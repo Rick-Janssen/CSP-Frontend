@@ -159,7 +159,7 @@
 
         // Fetch product details and reviews
         function fetchProductDetails() {
-            fetch(`http://192.168.45.164/csp-backend/product/${productId}`)
+            fetch(`http://localhost/csp-backend/product/${productId}`)
                 .then(response => response.json())
                 .then(data => {
                     // Display product details
@@ -221,7 +221,7 @@
                 rating: document.getElementById('review-rating').value
             };
 
-            fetch(`http://192.168.45.164/csp-backend/product/${productId}/review`, {
+            fetch(`http://localhost/csp-backend/product/${productId}/review`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
