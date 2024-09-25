@@ -45,9 +45,6 @@ function Navbar() {
               <Link to="#">About us</Link>
             </li>
             <li>
-              <Link to="#">Contact</Link>
-            </li>
-            <li>
               <Link to="login" className="Formbutton">
                 Login
               </Link>
