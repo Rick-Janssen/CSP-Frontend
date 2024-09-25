@@ -101,13 +101,27 @@ const ProductList = () => {
                             <p><strong>Type:</strong> {product.type}</p>
                         </div>
                         <div className="rating">
-                            {/* Render stars based on rating */}
-                            {Array.from({ length: 5 }, (_, index) => (
-                                <span key={index} className="star">
-                                    {index < product.rating ? '★' : '☆'}
-                                </span>
-                            ))}
+
+                            {product && product.reviews.length > 0 ? (
+                                (() => {
+                                    const totalRating = product.reviews.reduce((acc, review) => acc + review.rating, 0);
+                                    const averageRating = totalRating / product.reviews.length;
+                                    return (
+                                        <div>
+                                            {Array.from({ length: 5 }, (_, index) => (
+                                                <span key={index} className="star">
+                                                    {index < Math.round(averageRating) ? '★' : '☆'}
+                                                </span>
+                                            ))}
+                                            <p>{averageRating.toFixed(1)} / 5</p> {/* Display average rating */}
+                                        </div>
+                                    );
+                                })()
+                            ) : (
+                                <p>No ratings available.</p>
+                            )}
                         </div>
+
                     </div>
                 ))}
             </div>
