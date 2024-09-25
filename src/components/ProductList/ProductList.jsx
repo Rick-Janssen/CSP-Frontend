@@ -89,6 +89,7 @@ const ProductList = () => {
 
             <div id="product-list">
                 {filteredProducts.map(product => (
+<<<<<<< HEAD
                        <ProductCard id={product.id} image={product.image_url} name={product.name} type={product.origin} country={product.type} stars={product.rating} />
                     // <div
                     //     key={product.id}
@@ -110,6 +111,42 @@ const ProductList = () => {
                     //         ))}
                     //     </div>
                     // </div>
+=======
+                    <div
+                        key={product.id}
+                        className="product"
+                        onClick={() => window.location.href = `product/${product.id}`}
+                    >
+                        <img src={product.image_url} alt={product.name} />
+                        <div className="details">
+                            <h2>{product.name}</h2>
+                            <p><strong>Origin:</strong> {product.origin}</p>
+                            <p><strong>Type:</strong> {product.type}</p>
+                        </div>
+                        <div className="rating">
+
+                            {product && product.reviews.length > 0 ? (
+                                (() => {
+                                    const totalRating = product.reviews.reduce((acc, review) => acc + review.rating, 0);
+                                    const averageRating = totalRating / product.reviews.length;
+                                    return (
+                                        <div>
+                                            {Array.from({ length: 5 }, (_, index) => (
+                                                <span key={index} className="star" >
+                                                    {index < Math.round(averageRating) ? '★' : '☆'}
+                                                </span>
+                                            ))}
+                                            <span style={{ marginLeft: '10px' }} >{averageRating.toFixed(1)} / 5</span>
+                                        </div>
+                                    );
+                                })()
+                            ) : (
+                                <p>No ratings available.</p>
+                            )}
+                        </div>
+
+                    </div>
+>>>>>>> dcf1940ab589e9b6a90c9539648082cb41576c28
                 ))}
             </div>
             <button onClick={logout}>Logout</button>
