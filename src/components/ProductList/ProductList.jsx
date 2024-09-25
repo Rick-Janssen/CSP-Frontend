@@ -109,11 +109,11 @@ const ProductList = () => {
                                     return (
                                         <div>
                                             {Array.from({ length: 5 }, (_, index) => (
-                                                <span key={index} className="star">
+                                                <span key={index} className="star" >
                                                     {index < Math.round(averageRating) ? '★' : '☆'}
                                                 </span>
                                             ))}
-                                            <p>{averageRating.toFixed(1)} / 5</p> {/* Display average rating */}
+                                            <span style={{ marginLeft: '10px' }} >{averageRating.toFixed(1)} / 5</span>
                                         </div>
                                     );
                                 })()
