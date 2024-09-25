@@ -42,7 +42,8 @@ h1 {
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    margin-left: 5px;
+    width: 100px;
+    margin-right: 10px;
 }
 
 .filter-buttons button:hover {
