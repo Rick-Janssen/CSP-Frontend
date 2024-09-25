@@ -10,7 +10,7 @@ const ProductList = () => {
     // Function to fetch products from the backend
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://192.168.45.164/csp-backend/products');
+            const response = await fetch('http://Localhost/csp-backend/products');
             const data = await response.json();
             setProducts(data);
             setFilteredProducts(data); // Initialize filtered products
@@ -52,7 +52,7 @@ const ProductList = () => {
     }, [searchQuery, typeFilter, products]);
 
     function logout() {
-        fetch('http://192.168.45.164/csp-backend/logout', {
+        fetch('http://Localhost/csp-backend/logout', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
