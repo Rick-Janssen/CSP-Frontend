@@ -10,7 +10,7 @@ const ProductList = () => {
     // Function to fetch products from the backend
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://192.168.45.164/csp-backend/products');
+            const response = await fetch('http://localhost/csp-backend/products');
             const data = await response.json();
             setProducts(data);
             setFilteredProducts(data); // Initialize filtered products
@@ -52,7 +52,7 @@ const ProductList = () => {
     }, [searchQuery, typeFilter, products]);
 
     function logout() {
-        fetch('http://192.168.45.164/csp-backend/logout', {
+        fetch('http://localhost/csp-backend/logout', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -71,9 +71,6 @@ const ProductList = () => {
 
     return (
         <div>
-
-
-
             <div className="filter-section">
                 <input
                     type="text"
@@ -95,7 +92,7 @@ const ProductList = () => {
                     <div
                         key={product.id}
                         className="product"
-                        onClick={() => window.location.href = `product-details.html?id=${product.id}`}
+                        onClick={() => window.location.href = `product/${product.id}`}
                     >
                         <img src={product.image_url} alt={product.name} />
                         <div className="details">
