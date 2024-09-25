@@ -2,10 +2,16 @@
     margin-left: 20px;
     margin-right: 20px;
     width: 200px;
+    background-color: #fff;
+    border-radius: 11px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 11px;
   } .image-box{
     height: 200px;
     width: 200px;
     background-color:  #aaa7a7;
+    border-radius: 11px;
+    
   } .product-description{
     display: flex;
     justify-content: space-between;
