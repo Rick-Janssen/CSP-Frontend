@@ -6,8 +6,7 @@ import ReviewsContainer from '../ReviewsContainer/ReviewsContainer';
 import Star from "../../assets/star-full.png";
 import StarEmpty from "../../assets/star-empty.png";
 import StarHalf from "../../assets/star-half.png";
-
-
+import Navbar from "../../components/Navbar/Navbar";
 const DetailsPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -89,72 +88,75 @@ const DetailsPage = () => {
   };
 
   return (
-    <div className='product-details'>
-      <div className="product-card">
-        {product ? (
-          <>
-            <img src={product.image_url} alt={product.name} className="product-image" />
-            <div className="content">
-              <div className="header">
-                <h1 className="title">{product.name}</h1>
-              </div>
-              <div className='type'>
-                <p>Type: {product.type}</p>
-                <p>Country: {product.origin}</p>
-              </div>
-              <p className="description">{product.description}</p>
-            </div>
-          </>
-        ) : (
-          <p>Loading product details...</p>
-        )}
-
-        <form onSubmit={handleSubmit} className="review-form">
-          <textarea
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-            placeholder="Write a review"
-            className="review-textarea"
-          />
-
-
-          <div className="rating-container">
-            <div className="stars">
-              {[...Array(5)].map((_, index) => (
-                <div key={index} className="star" style={{ backgroundImage: `url(${getStarImage(index)})` }}>
-                  <div
-                    className="half-left"
-                    onMouseOver={() => highlightStars(index + 0.5)}
-                    onMouseOut={resetHighlight}
-                    onClick={() => updateRating(index + 0.5)}
-
-                  />
-                  <div
-                    className="half-right"
-                    onMouseOver={() => highlightStars(index + 1)}
-                    onMouseOut={resetHighlight}
-                    onClick={() => updateRating(index + 1)}
-
-                  />
+    <>
+      <Navbar />
+      <div className='product-details'>
+        <div className="product-card">
+          {product ? (
+            <>
+              <img src={product.image_url} alt={product.name} className="product-image" />
+              <div className="content">
+                <div className="header">
+                  <h1 className="title">{product.name}</h1>
                 </div>
-              ))}
+                <div className='type'>
+                  <p>Type: {product.type}</p>
+                  <p>Country: {product.origin}</p>
+                </div>
+                <p className="description">{product.description}</p>
+              </div>
+            </>
+          ) : (
+            <p>Loading product details...</p>
+          )}
+
+          <form onSubmit={handleSubmit} className="review-form">
+            <textarea
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              placeholder="Write a review"
+              className="review-textarea"
+            />
+
+
+            <div className="rating-container">
+              <div className="stars">
+                {[...Array(5)].map((_, index) => (
+                  <div key={index} className="star" style={{ backgroundImage: `url(${getStarImage(index)})` }}>
+                    <div
+                      className="half-left"
+                      onMouseOver={() => highlightStars(index + 0.5)}
+                      onMouseOut={resetHighlight}
+                      onClick={() => updateRating(index + 0.5)}
+
+                    />
+                    <div
+                      className="half-right"
+                      onMouseOver={() => highlightStars(index + 1)}
+                      onMouseOut={resetHighlight}
+                      onClick={() => updateRating(index + 1)}
+
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="rating-value">{hoverRating.toFixed(1)}</div>
             </div>
-            <div className="rating-value">{hoverRating.toFixed(1)}</div>
-          </div>
 
 
 
-          <div className="rating-footer">
-            <button type="submit" className="submit-button">SUBMIT</button>
-          </div>
-        </form>
+            <div className="rating-footer">
+              <button type="submit" className="submit-button">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+        <h2>OTHER REVIEWS</h2>
+        <div className="reviews">
+          <ReviewsContainer callbackProp={getStarImage} reviews={product ? product.reviews : []} />
+        </div>
+
       </div>
-      <h2>OTHER REVIEWS</h2>
-      <div className="reviews">
-        <ReviewsContainer callbackProp={getStarImage} reviews={product ? product.reviews : []} />
-      </div>
-
-    </div>
+    </>
   );
 };
 

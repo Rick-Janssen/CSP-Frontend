@@ -51,23 +51,7 @@ const ProductList = () => {
         filterProducts();
     }, [searchQuery, typeFilter, products]);
 
-    function logout() {
-        fetch('http://localhost/csp-backend/logout', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
 
-                if (data.message === "Logged out successfully") {
-
-                    localStorage.removeItem('token');
-                }
-            });
-    }
 
     return (
         <div>
@@ -90,31 +74,12 @@ const ProductList = () => {
             <div id="product-list">
                 {filteredProducts.map(product => (
                     <ProductCard product={product} />
-                    // <div
-                    //     key={product.id}
-                    //     className="product"
-                    //     onClick={() => window.location.href = `product/${product.id}`}
-                    // >
-                    //     <img src={product.image_url} alt={product.name} />
-                    //     <div className="details">
-                    //         <h2>{product.name}</h2>
-                    //         <p><strong>Origin:</strong> {product.origin}</p>
-                    //         <p><strong>Type:</strong> {product.type}</p>
-                    //     </div>
-                    //     <div className="rating">
-                    //         {/* Render stars based on rating */}
-                    //         {Array.from({ length: 5 }, (_, index) => (
-                    //             <span key={index} className="star">
-                    //                 {index < product.rating ? '★' : '☆'}
-                    //             </span>
-                    //         ))}
-                    //     </div>
-                    // </div>
+
                 ))}
             </div>
-            <button onClick={logout}>Logout</button>
 
         </div>
+
     );
 };
 

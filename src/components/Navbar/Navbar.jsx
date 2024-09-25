@@ -35,7 +35,7 @@ function Navbar() {
 
           localStorage.removeItem('token');
         }
-        window.location.href = '/';
+        window.location.href = '/home';
       });
   }
 
@@ -45,7 +45,7 @@ function Navbar() {
         <img className="LogoPng" src={Logo} alt="Logo" />
         <div className="nav-content">
           <div className="logo">
-            <Link to="/">Rater</Link>
+            <Link to="/home">Rater</Link>
           </div>
           <ul className="nav-links">
             <li>
