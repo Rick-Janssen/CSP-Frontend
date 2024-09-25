@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './ProductList.css'; // Import your CSS styles
-import ProductCard from '../ProductCard/ProductCard';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]); // State for all products
@@ -52,6 +51,24 @@ const ProductList = () => {
         filterProducts();
     }, [searchQuery, typeFilter, products]);
 
+    function logout() {
+        fetch('http://192.168.45.164/csp-backend/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+
+                if (data.message === "Logged out successfully") {
+
+                    localStorage.removeItem('token');
+                }
+            });
+    }
+
     return (
         <div>
             <div className="filter-section">
@@ -71,36 +88,31 @@ const ProductList = () => {
             </div>
 
             <div id="product-list">
-                {console.log(products)}
                 {filteredProducts.map(product => (
-                    <ProductCard id={product.id} image={product.image_url} name={product.name} type={product.origin} country={product.type} stars={product.rating} />
-
-                    // <div
-                    //     key={product.id}
-                    //     className="product"
-                    //     onClick={() => window.location.href = `product-details.html?id=${product.id}`}
-                    // >   
-                    //     <img src={product.image_url} alt={product.name} />
-                    //     <div className="details">
-                    //         <h2>{product.name}</h2>
-                    //         <p><strong>Origin:</strong> {product.origin}</p>
-                    //         <p><strong>Type:</strong> {product.type}</p>
-                    //     </div>
-                    //     <div className="rating">
-                    //         {/* Render stars based on rating */}
-                    //         {Array.from({ length: 5 }, (_, index) => (
-                    //             <span key={index} className="star">
-                    //                 {index < product.rating ? '★' : '☆'}
-                    //             </span>
-                    //         ))}
-                    //     </div>
-                    // </div>
+                    <div
+                        key={product.id}
+                        className="product"
+                        onClick={() => window.location.href = `product/${product.id}`}
+                    >
+                        <img src={product.image_url} alt={product.name} />
+                        <div className="details">
+                            <h2>{product.name}</h2>
+                            <p><strong>Origin:</strong> {product.origin}</p>
+                            <p><strong>Type:</strong> {product.type}</p>
+                        </div>
+                        <div className="rating">
+                            {/* Render stars based on rating */}
+                            {Array.from({ length: 5 }, (_, index) => (
+                                <span key={index} className="star">
+                                    {index < product.rating ? '★' : '☆'}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
                 ))}
             </div>
+            <button onClick={logout}>Logout</button>
 
-            <footer>
-                <p>&copy; 2024 Product Rating Site. All rights reserved.</p>
-            </footer>
         </div>
     );
 };
