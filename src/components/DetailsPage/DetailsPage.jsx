@@ -3,42 +3,57 @@ import { useParams } from "react-router-dom";
 import './DetailsPage.css';
 
 const DetailsPage = () => {
-  const { id } = useParams();  // Get the product ID from the URL
-  const [product, setProduct] = useState(null);  // State for storing product details
-  const [review, setReview] = useState('');  // State for storing reviews
-  const [rating, setRating] = useState();  // Rating for the review form
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [review, setReview] = useState('');
+  const [rating, setRating] = useState(0); // Default rating
 
-
-  // Function to fetch product details including reviews
   const fetchProductDetails = () => {
     fetch(`http://192.168.45.164/csp-backend/product/${id}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        setProduct(data);  // Set product data in the state
-
+        setProduct(data);
       })
       .catch(error => {
         console.error('Error fetching product details:', error);
       });
   };
 
-  // Fetch product details when component mounts
   useEffect(() => {
     fetchProductDetails();
   }, [id]);
 
-  // Handle the review form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newReview = {
+      product_id: id,
       content: review,
       rating: rating,
-      productId: id,
     };
 
+    fetch(`http://192.168.45.164/csp-backend/product/${id}/review`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newReview),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Review submitted successfully:', data);
+      })
+      .catch(error => {
+        console.error('Error submitting review:', error);
+      });
   };
+
 
   return (
     <div className='product-details'>
@@ -49,7 +64,6 @@ const DetailsPage = () => {
             <div className="content">
               <div className="header">
                 <h1 className="title">{product.name}</h1>
-
               </div>
               <div className='type'>
                 <p>Type: {product.type}</p>
@@ -69,8 +83,11 @@ const DetailsPage = () => {
             placeholder="Write a review"
             className="review-textarea"
           />
+          <input type="number" min={0} max={5}
+            value={rating}
+            onChange={(e) => setRating(e.target.value)} />
           <div className="rating-footer">
-            <div className="stars-footer">★★★★★ <span className="rating-number">{rating}</span></div>
+            {/* {'★'.repeat(averageRating)}{'☆'.repeat(5 - review.rating)} */}
             <button type="submit" className="submit-button">SUBMIT</button>
           </div>
         </form>
@@ -78,25 +95,19 @@ const DetailsPage = () => {
 
       <div className='product-card'>
         <div className="reviews">
-          {/* <h2>OTHER REVIEWS</h2>
-          {reviews.length > 0 ? (
-            reviews.map((review, index) => (
+          <h2>OTHER REVIEWS</h2>
+          {product && product.reviews && product.reviews.length > 0 ? (
+            product.reviews.map((review, index) => (
               <div className="review" key={index}>
-                <h3>{review.title || "Anonymous"}</h3>
-                <div className="rating">
-                  {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
-                </div>
+                {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                 <p>{review.content}</p>
               </div>
             ))
           ) : (
             <p>No reviews yet.</p>
-          )} */}
+          )}
         </div>
       </div>
-
-
-
     </div>
   );
 };
