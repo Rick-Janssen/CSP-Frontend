@@ -5,9 +5,9 @@ import './DetailsPage.css';
 const DetailsPage = () => {
   const { id } = useParams();  // Get the product ID from the URL
   const [product, setProduct] = useState(null);  // State for storing product details
-  const [reviews, setReviews] = useState([]);  // State for storing reviews
-  const [rating, setRating] = useState(5.0);  // Rating for the review form
-  const [reviewContent, setReviewContent] = useState('');  // State for storing the new review content
+  const [review, setReview] = useState('');  // State for storing reviews
+  const [rating, setRating] = useState();  // Rating for the review form
+
 
   // Function to fetch product details including reviews
   const fetchProductDetails = () => {
@@ -16,7 +16,7 @@ const DetailsPage = () => {
       .then(data => {
         console.log(data);
         setProduct(data);  // Set product data in the state
-        setReviews(data.reviews || []);  // Set reviews in the state (if available)
+
       })
       .catch(error => {
         console.error('Error fetching product details:', error);
@@ -38,10 +38,6 @@ const DetailsPage = () => {
       productId: id,
     };
 
-    setReviews([...reviews, newReview]);
-
-    setReviewContent('');
-    setRating(5.0);
   };
 
   return (
@@ -68,8 +64,8 @@ const DetailsPage = () => {
 
         <form onSubmit={handleSubmit} className="review-form">
           <textarea
-            value={reviewContent}
-            onChange={(e) => setReviewContent(e.target.value)}
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
             placeholder="Write a review"
             className="review-textarea"
           />
