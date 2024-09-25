@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -12,223 +13,230 @@ body, html {
   align-items: flex-start;
   background-color: #e0e0e0;
   width: 100%;
-  max-width: 1320px; 
-  margin: 44px auto; 
-  padding: 22px; 
+  max-width: 1320px;
+  margin: 44px auto;
+  padding: 22px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 11px; 
-  overflow: hidden; 
+  border-radius: 11px;
+  overflow: hidden;
 }
-  
+
+.image-placeholder {
+  flex-basis: 37%;
+  height: 440px;
+  background-color: #999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  margin-right: 33px;
+}
+
+.content {
+  flex-basis: 53%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 1.65rem;
+}
+
+.stars {
+  font-size: 1.98rem;
+  color: gold;
+  display: flex;
+  align-items: center;
+}
+
+.rating-number {
+  margin-left: 11px;
+  font-size: 1.98rem;
+  color: black;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  margin: 22px 0;
+  color: #333;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-textarea {
+  resize: none;
+  height: 88px;
+  padding: 11px;
+  margin-bottom: 11px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.1rem;
+}
+
+.rating-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.stars-footer {
+  font-size: 1.98rem;
+  color: gold;
+  display: flex;
+  align-items: center;
+}
+
+.submit-button {
+  width: 132px;
+  background-color: gray;
+  color: white;
+  padding: 11px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: darkgray;
+}
+
+
+@media (max-width: 768px) {
+  .product-card {
+    flex-direction: column;
+    padding: 22px;
+  }
+
   .image-placeholder {
-    flex-basis: 37%;
-    height: 440px;
-    background-color: #999999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 22px; 
-    margin-right: 33px; 
+    width: 100%;
+    height: 275px;
+    margin-right: 0;
+    margin-bottom: 22px;
   }
-  
+
   .content {
-    flex-basis: 53%; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
   }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 22px; 
-  }
-  
+
   .title {
-    font-size: 2.75rem; 
-    font-weight: bold;
-    margin: 0;
+    font-size: 2.2rem;
   }
-  
-  .rating {
-    display: flex;
-    align-items: center;
-    font-size: 1.65rem; 
-  }
-  
-  .stars {
-    font-size: 1.98rem; 
-    color: gold;
-    display: flex;
-    align-items: center;
-  }
-  
-  .rating-number {
-    margin-left: 11px;
-    font-size: 1.98rem; 
-    color: black;
-  }
-  
-  .description {
-    font-size: 1.1rem;
-    line-height: 1.65; 
-    margin: 22px 0;
-    color: #333;
-  }
-  
-  .review-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .review-textarea {
-    resize: none;
-    height: 88px; 
-    padding: 11px; 
-    margin-bottom: 11px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1.1rem; 
-  }
-  
-  .rating-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 11px; 
-  }
-  
+
+  .stars,
   .stars-footer {
-    font-size: 1.98rem; 
-    color: gold;
-    display: flex;
-    align-items: center;
+    font-size: 1.76rem;
   }
-  
+
+  .review-textarea {
+    height: 66px;
+  }
+
   .submit-button {
-    width: 132px;
-    background-color: gray;
-    color: white;
-    padding: 11px; 
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    width: 110px;
   }
-  
-  .submit-button:hover {
-    background-color: darkgray;
-  }
-  
-  
-  @media (max-width: 768px) {
-    .product-card {
-      flex-direction: column;
-      padding: 22px; 
-    }
-  
-    .image-placeholder {
-      width: 100%;
-      height: 275px;
-      margin-right: 0;
-      margin-bottom: 22px; 
-    }
-  
-    .content {
-      width: 100%;
-    }
-  
-    .title {
-      font-size: 2.2rem; 
-    }
-  
-    .stars, .stars-footer {
-      font-size: 1.76rem;
-    }
-  
-    .review-textarea {
-      height: 66px;
-    }
-  
-    .submit-button {
-      width: 110px; 
-    }
-  }
+}
 
-  .review h3 {
-    margin-top: 0;
-  }
-  
-  .rating {
-    font-size: 20px;
-    color: #333;
-  }
-  
- 
-  .product-box{
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  
-  .h2-title{
-    display: flex;
-    flex-direction: column;
-  }
-  .similar-products {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: #e0e0e0;
-    width: 99%;
-    max-width: 1320px; 
-    margin: 44px auto; 
-    padding: 22px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 11px; 
-  }
-  .product-showcase {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: #938d8d;
-    max-width: 1320px; 
-    margin: 44px auto; 
-    padding: 22px; 
-    border-radius: 11px; 
-  }
-  
-  .more-reviews{
-    margin: 10px 0 10px 5px;
-    font-weight: bold;
-  }
-  
-  .product-description{
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    font-style: italic;
-  }
-  .product-info{
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-  }
+.review h3 {
+  margin-top: 0;
+}
 
-  .reviews {
-    display: flex;
-    flex-direction: column;
-    max-height: 300px; /* Set a maximum height for the reviews section */
-    overflow-y: auto; /* Enable vertical scrolling if content exceeds */
-    width: 100%; /* Ensure it doesn't exceed the width of the card */
+.rating {
+  font-size: 20px;
+  color: #333;
+}
+
+
+.product-box {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.h2-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.similar-products {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #e0e0e0;
+  width: 99%;
+  max-width: 1320px;
+  margin: 44px auto;
+  padding: 22px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 11px;
+}
+
+.product-showcase {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #938d8d;
+  max-width: 1320px;
+  margin: 44px auto;
+  padding: 22px;
+  border-radius: 11px;
+}
+
+.more-reviews {
+  margin: 10px 0 10px 5px;
+  font-weight: bold;
+}
+
+.product-description {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  /* Set a maximum height for the reviews section */
+  overflow-y: auto;
+  /* Enable vertical scrolling if content exceeds */
+  width: 100%;
+  /* Ensure it doesn't exceed the width of the card */
 }
 
 .reviews-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; 
-    width: 100%; 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
 }
 
 .reviews-container {
@@ -238,36 +246,80 @@ body, html {
 }
 
 .review {
-    background-color: #aaa7a7;
-    padding: 20px;
-    margin-bottom: 10px;
-    width: calc(33.33% - 10px); 
-    box-sizing: border-box;
+  background-color: #aaa7a7;
+  padding: 20px;
+  margin-bottom: 10px;
+  width: calc(33.33% - 10px);
+  box-sizing: border-box;
 }
 
 /* Style for Show More Button */
 .show-more {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #0057b7; /* Button color */
-    color: white; /* Text color */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #0057b7;
+  /* Button color */
+  color: white;
+  /* Text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .show-more:hover {
-    background-color: #003d7a; /* Darker shade on hover */
+  background-color: #003d7a;
+  /* Darker shade on hover */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .product-card {
-        flex-direction: column; /* Stack elements on smaller screens */
-    }
-  
-    .review {
-        width: 100%; /* Full width for smaller screens */
-    }
+  .product-card {
+    flex-direction: column;
+    /* Stack elements on smaller screens */
+  }
+
+  .review {
+    width: 100%;
+    /* Full width for smaller screens */
+  }
+}
+
+.rating-value {
+  margin-left: 5px;
+  /* Reduced margin for closer positioning */
+  font-size: 18px;
+  margin-right: 35%;
+  /* Adjusted margin for button spacing */
+  margin-top: 2%;
+}
+
+.stars {
+  display: flex;
+  cursor: pointer;
+}
+
+.star {
+  position: relative;
+  width: 24px;
+  /* Adjust based on your design */
+  height: 24px;
+  /* Adjust based on your design */
+  background-size: cover;
+}
+
+.half-left,
+.half-right {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+}
+
+.half-left {
+  left: 0;
+}
+
+.half-right {
+  right: 0;
 }

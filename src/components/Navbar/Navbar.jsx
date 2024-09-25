@@ -19,6 +19,26 @@ function Navbar() {
     };
   }, []);
 
+
+  const logout = () => {
+    fetch('http://localhost/csp-backend/logout', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.message);
+
+        if (data.message === "Logged out successfully") {
+
+          localStorage.removeItem('token');
+        }
+        window.location.href = '/';
+      });
+  }
+
   return (
     <>
       <nav className={isSticky ? 'sticky' : ''}>
@@ -39,8 +59,10 @@ function Navbar() {
             </li>
             <li>
               {isAuthenticated ? (
-                <Link to="/logout" className="Formbutton">
+                <Link onClick={logout} className="Formbutton">
                   Logout
+
+
                 </Link>
               ) : (
                 <Link to="/login" className="Formbutton">

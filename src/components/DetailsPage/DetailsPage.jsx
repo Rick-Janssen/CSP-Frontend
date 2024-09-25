@@ -3,23 +3,51 @@ import { useParams } from "react-router-dom";
 import './DetailsPage.css';
 import ReviewsContainer from '../ReviewsContainer/ReviewsContainer';
 
+import Star from "../../assets/star-full.png";
+import StarEmpty from "../../assets/star-empty.png";
+import StarHalf from "../../assets/star-half.png";
+
+
 const DetailsPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(0); // Default rating
+  const [hoverRating, setHoverRating] = useState(0);
   const [visibleReviews, setVisibleReviews] = useState(6); // Start by showing 6 reviews
 
   const fetchProductDetails = () => {
     fetch(`http://localhost/csp-backend/product/${id}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+
         setProduct(data);
       })
       .catch(error => {
         console.error('Error fetching product details:', error);
       });
+  };
+  const updateRating = (newRating) => {
+    setRating(newRating);
+  };
+
+  const highlightStars = (hoverRating) => {
+    setHoverRating(hoverRating);
+  };
+
+  const resetHighlight = () => {
+    setHoverRating(rating);
+  };
+
+  const getStarImage = (index) => {
+    const starRating = index + 1;
+    if (hoverRating >= starRating) {
+      return Star; // Full star
+    } else if (hoverRating >= starRating - 0.5) {
+      return StarHalf; // Half star
+    } else {
+      return StarEmpty; // Empty star
+    }
   };
 
   useEffect(() => {
@@ -88,13 +116,34 @@ const DetailsPage = () => {
             placeholder="Write a review"
             className="review-textarea"
           />
-          <input
-            type="number"
-            min={0}
-            max={5}
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-          />
+
+
+          <div className="rating-container">
+            <div className="stars">
+              {[...Array(5)].map((_, index) => (
+                <div key={index} className="star" style={{ backgroundImage: `url(${getStarImage(index)})` }}>
+                  <div
+                    className="half-left"
+                    onMouseOver={() => highlightStars(index + 0.5)}
+                    onMouseOut={resetHighlight}
+                    onClick={() => updateRating(index + 0.5)}
+
+                  />
+                  <div
+                    className="half-right"
+                    onMouseOver={() => highlightStars(index + 1)}
+                    onMouseOut={resetHighlight}
+                    onClick={() => updateRating(index + 1)}
+
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="rating-value">{hoverRating.toFixed(1)}</div>
+          </div>
+
+
+
           <div className="rating-footer">
             <button type="submit" className="submit-button">SUBMIT</button>
           </div>
@@ -102,7 +151,7 @@ const DetailsPage = () => {
       </div>
       <h2>OTHER REVIEWS</h2>
       <div className="reviews">
-        <ReviewsContainer reviews={product ? product.reviews : []} />
+        <ReviewsContainer callbackProp={getStarImage} reviews={product ? product.reviews : []} />
       </div>
 
     </div>
@@ -110,3 +159,6 @@ const DetailsPage = () => {
 };
 
 export default DetailsPage;
+
+
+
