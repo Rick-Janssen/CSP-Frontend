@@ -71,9 +71,6 @@ const ProductList = () => {
 
     return (
         <div>
-
-
-
             <div className="filter-section">
                 <input
                     type="text"
