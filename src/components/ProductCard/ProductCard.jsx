@@ -5,7 +5,7 @@ const ProductCard = ({id, image,name, type, country, stars}) => {
         <Link className='ProductCard'
         key={id}
         //CHANGE THIS TO ROUTER LINK
-        to={`product/${id}`}
+        to={`/product/${id}`}
         >
             <div className='image-box'><img src={image} alt={name} /></div>
             <div className="product-info">

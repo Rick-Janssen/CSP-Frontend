@@ -28,6 +28,9 @@
     padding: 22px; 
     border-radius: 11px; 
   }
+  .product-country{
+    text-align: right;
+  }
   .product-hr{
    
    margin-top: 4px;
