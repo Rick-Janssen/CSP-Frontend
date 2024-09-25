@@ -1,145 +1,102 @@
-import React, { useState } from 'react';
-import '../DetailsPage/DetailsPage.css';
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import './DetailsPage.css';
 
 const DetailsPage = () => {
-  const [rating, setRating] = useState(5.0);
-  const [review, setReview] = useState('');
+  const { id } = useParams();  // Get the product ID from the URL
+  const [product, setProduct] = useState(null);  // State for storing product details
+  const [review, setReview] = useState('');  // State for storing reviews
+  const [rating, setRating] = useState();  // Rating for the review form
 
+
+  // Function to fetch product details including reviews
+  const fetchProductDetails = () => {
+    fetch(`http://192.168.45.164/csp-backend/product/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setProduct(data);  // Set product data in the state
+
+      })
+      .catch(error => {
+        console.error('Error fetching product details:', error);
+      });
+  };
+
+  // Fetch product details when component mounts
+  useEffect(() => {
+    fetchProductDetails();
+  }, [id]);
+
+  // Handle the review form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Review submitted: ${review}`);
+
+    const newReview = {
+      content: review,
+      rating: rating,
+      productId: id,
+    };
 
   };
 
   return (
     <div className='product-details'>
       <div className="product-card">
-        <div className="image-placeholder">
-          <p>(image)</p>
-        </div>
-        <div className="content">
-          <div className="header">
-            <h1 className="title">TITLE</h1>
-            <div className="rating">
-              <div className="stars">
-                <span className="rating-number">{rating}</span> ★★★★★
+        {product ? (
+          <>
+            <img src={product.image_url} alt={product.name} className="product-image" />
+            <div className="content">
+              <div className="header">
+                <h1 className="title">{product.name}</h1>
+
               </div>
+              <div className='type'>
+                <p>Type: {product.type}</p>
+                <p>Country: {product.origin}</p>
+              </div>
+              <p className="description">{product.description}</p>
             </div>
+          </>
+        ) : (
+          <p>Loading product details...</p>
+        )}
+
+        <form onSubmit={handleSubmit} className="review-form">
+          <textarea
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            placeholder="Write a review"
+            className="review-textarea"
+          />
+          <div className="rating-footer">
+            <div className="stars-footer">★★★★★ <span className="rating-number">{rating}</span></div>
+            <button type="submit" className="submit-button">SUBMIT</button>
           </div>
-          <div className='type'>
-            <p>Type: Food</p>
-            <p>Country: Dutch</p>
-          </div>
-          <p className="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <form onSubmit={handleSubmit} className="review-form">
-            <textarea
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-              placeholder="review"
-              className="review-textarea"
-            />
-            <div className="rating-footer">
-              <div className="stars-footer">★★★★★ <span className="rating-number">{rating}</span></div>
-              <button type="submit" className="submit-button">SUBMIT</button>
-            </div>
-          </form>
-        </div>
+        </form>
       </div>
+
       <div className='product-card'>
-
-
         <div className="reviews">
-          <h2>OTHER REVIEWS</h2>
-          <div className="review">
-            <h3>USERNAME</h3>
-            <div className="rating">★★★★★</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div className="review">
-            <h3>USERNAME</h3>
-            <div className="rating">★★★☆☆</div> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div className="review">
-            <h3>USERNAME</h3>
-            <div className="rating">★★★☆☆</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <span className='more-reviews'>See more reviews</span>
-        </div>
-
-      </div>
-
-      <div className='similar-products'>
-        <div className='h2-title'>
-          <h2>SIMILAR PRODUCTS</h2>
-        </div>
-        <div className='product-showcase'>
-          <div className='product-box'>
-            <div className='image-box'></div>
-            <div className='product-info'>
-            <span className='product-name'>Product Name</span>
-            <span className='review-box'> 0★</span>
-            </div>
-            <div className='product-description'>
-              <span className='product-type'>Type:Food</span>
-              <span className='product-country'>Country:Dutch</span>
-            </div>
-            <hr className='product-hr'></hr>
-          </div>
-          <div className='product-box'>
-            <div className='image-box'></div>
-            <div className='product-info'>
-            <span className='product-name'>Product Name</span>
-            <span className='review-box'> 0★</span>
-            </div>
-            <div className='product-description'>
-              <span className='product-type'>Type:Food</span>
-              <span className='product-country'>Country:Dutch</span>
-            </div>
-            <hr className='product-hr'></hr>
-          </div>
-          <div className='product-box'>
-            <div className='image-box'></div>
-            <div className='product-info'>
-            <span className='product-name'>Product Name</span>
-            <span className='review-box'> 0★</span>
-            </div>
-            <div className='product-description'>
-              <span className='product-type'>Type:Food</span>
-              <span className='product-country'>Country:Dutch</span>
-            </div>
-            <hr className='product-hr'></hr>
-          </div>
-          <div className='product-box'>
-            <div className='image-box'></div>
-            <div className='product-info'>
-            <span className='product-name'>Product Name</span>
-            <span className='review-box'> 0★</span>
-            </div>
-            <div className='product-description'>
-              <span className='product-type'>Type:Food</span>
-              <span className='product-country'>Country:Dutch</span>
-            </div>
-            <hr className='product-hr'></hr>
-          </div>
-          <div className='product-box'>
-            <div className='image-box'></div>
-            <div className='product-info'>
-            <span className='product-name'>Product Name</span>
-            <span className='review-box'> 0★</span>
-            </div>
-            <div className='product-description'>
-              <span className='product-type'>Type:Food</span>
-              <span className='product-country'>Country:Dutch</span>
-            </div>
-            <hr className='product-hr'></hr>
-          </div>
+          {/* <h2>OTHER REVIEWS</h2>
+          {reviews.length > 0 ? (
+            reviews.map((review, index) => (
+              <div className="review" key={index}>
+                <h3>{review.title || "Anonymous"}</h3>
+                <div className="rating">
+                  {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                </div>
+                <p>{review.content}</p>
+              </div>
+            ))
+          ) : (
+            <p>No reviews yet.</p>
+          )} */}
         </div>
       </div>
+
+
+
     </div>
   );
 };
