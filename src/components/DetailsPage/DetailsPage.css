@@ -165,17 +165,7 @@ body, html {
     color: #333;
   }
   
-  .product-hr{
-    height: 1px;
-    border: solid #333 ;
-    background-color: #333;
-  }
-  
-  .image-box{
-    height: 200px;
-    width: 200px;
-    background-color:  #aaa7a7;
-  }
+ 
   .product-box{
     margin-left: 20px;
     margin-right: 20px;
