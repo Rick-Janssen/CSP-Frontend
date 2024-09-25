@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import './DetailsPage.css';
-import Star from "../../assets/star-full.png";
-import StarEmpty from "../../assets/star-empty.png";
-import StarHalf from "../../assets/star-half.png";
+import ReviewsContainer from '../ReviewsContainer/ReviewsContainer';
 
 const DetailsPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [review, setReview] = useState('');
-  const [rating, setRating] = useState(0);
-  const [hoverRating, setHoverRating] = useState(0); // for hover effect
+  const [rating, setRating] = useState(0); // Default rating
+  const [visibleReviews, setVisibleReviews] = useState(6); // Start by showing 6 reviews
 
   const fetchProductDetails = () => {
     fetch(`http://localhost/csp-backend/product/${id}`)
@@ -141,23 +139,11 @@ const DetailsPage = () => {
           <button type="submit" className="submit-button">SUBMIT</button>
         </form>
       </div>
-
-      <div className='product-card'>
-        <div className="reviews">
-          <h2>OTHER REVIEWS</h2>
-          {product && product.reviews && product.reviews.length > 0 ? (
-            product.reviews.map((review, index) => (
-              <div className="review" key={index}>
-                {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
-                <span style={{ float: 'right' }} >{review.user_id || "Anonymous"}</span>
-                <p>{review.content}</p>
-              </div>
-            ))
-          ) : (
-            <p>No reviews yet.</p>
-          )}
-        </div>
+      <h2>OTHER REVIEWS</h2>
+      <div className="reviews">
+        <ReviewsContainer reviews={product ? product.reviews : []} />
       </div>
+
     </div>
   );
 };

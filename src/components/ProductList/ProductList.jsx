@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import'./ProductList.css'; // Import your CSS styles
+import './ProductList.css'; // Import your CSS styles
 import ProductCard from "../ProductCard/ProductCard";
 const ProductList = () => {
     const [products, setProducts] = useState([]); // State for all products
@@ -89,7 +89,7 @@ const ProductList = () => {
 
             <div id="product-list">
                 {filteredProducts.map(product => (
-                       <ProductCard id={product.id} image={product.image_url} name={product.name} type={product.type} country={product.origin} stars={product.rating} />
+                    <ProductCard product={product} />
                     // <div
                     //     key={product.id}
                     //     className="product"
