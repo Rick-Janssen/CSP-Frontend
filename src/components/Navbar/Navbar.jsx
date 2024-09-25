@@ -1,50 +1,65 @@
-import { useState } from 'react';
-import './Navbar.css'
+import React, { useEffect, useState } from 'react';
+import './Navbar.css';
+import Logo from "../../assets/FlagFlaggyLogo.png";
+import {Link} from 'react-router-dom';
+
 
 function Navbar() {
-  const [navClass, setNavClass] = useState("");
-  window.onscroll = function () {
-    if (document.documentElement.scrollTop > 20) {
-      setNavClass("sticky");
-    } else {
-      setNavClass("");
-    }
-  };
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav className={navClass}>
-        <img className="LogoPng" alt="Logo" src="./pic/FlagFlaggyLogo.png" />
+      <nav className={isSticky ? 'sticky' : ''}>
+        <img className="LogoPng" src={Logo} alt="Logo" />
         <div className="nav-content">
           <div className="logo">
-            <a href="./">Idk man</a>
+            <Link to="/">Rater</Link>
           </div>
           <ul className="nav-links">
             <li>
-              <a href="/">Home</a>
+              <Link to="/">HomePage</Link>
             </li>
             <li>
-              <a href="bier">products</a>
+              <Link to="/">Products</Link>  
             </li>
             <li>
-              <a href="#">mosted rated</a>
+              <Link to="#">Most Rated</Link>
             </li>
             <li>
-              <a href="#">About us</a>
+              <Link to="#">About us</Link>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <Link to="#">Contact</Link>
             </li>
-
             <li>
-              <a href="register" className="Formbutton">
+              <Link to="login" className="Formbutton">
                 Login
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
       </nav>
       <section className="home"></section>
+
+      <div className='H'></div>
     </>
   );
 }
+
 export default Navbar;
