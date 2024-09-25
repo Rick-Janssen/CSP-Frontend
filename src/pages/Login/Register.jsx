@@ -19,7 +19,7 @@ const Register = () => {
 
     setError('');
 
-    fetch('http://192.168.45.164/csp-backend/register', {
+    fetch('http://localhost/csp-backend/register', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

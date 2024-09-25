@@ -7,7 +7,7 @@ const ProtectedRoutes = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            fetch('http://192.168.45.164/csp-backend/authenticate', {
+            fetch('http://localhost/csp-backend/authenticate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

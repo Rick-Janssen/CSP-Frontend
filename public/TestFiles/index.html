@@ -203,7 +203,7 @@
 
         // Function to fetch products from the backend
         function fetchProducts() {
-            fetch('http://192.168.45.164/csp-backend/products')
+            fetch('http://localhost/csp-backend/products')
                 .then(response => response.json())
                 .then(data => {
                     products = data; // Save products for filtering
