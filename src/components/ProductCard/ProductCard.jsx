@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
     return (
         <Link className='ProductCard'
-            key={id}
+            key={product.id}
             //CHANGE THIS TO ROUTER LINK
-            to={`/product/${id}`}
+            to={`/product/${product.id}`}
         >
             <div className='image-box'><img src={product.image_url} alt={product.name} /></div>
             <div className="product-info">
