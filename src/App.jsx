@@ -6,17 +6,18 @@ import HomePage from "./pages/HomePage/HomePage";
 import Register from "./pages/Login/Register";
 import Login from "./pages/Login/Login";
 import ProductList from "./components/ProductList/ProductList";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 
-const App = () =>{
+const App = () => {
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="Login" element={<Login />} /> 
-        <Route path="Register" element={<Register />} />
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </> 
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<HomePage />} />
+      <Route element={<ProtectedRoutes />}>
+        {/* <Route path="/admin" element={<Admin />} /> */}
+      </Route>
+    </Routes>
 
   );
 
