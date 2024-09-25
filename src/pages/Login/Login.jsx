@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
 
-    fetch('http://192.168.45.164/csp-backend/login', {
+    fetch('http://localhost/csp-backend/login', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

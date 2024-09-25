@@ -1,0 +1,73 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Softer background color */
+    color: #333;
+    height: 100%;
+  }
+  
+  /* Landing Page Container */
+  .landing-container {
+    display: flex;
+    align-items: center;  /* Center vertically */
+    justify-content: center;  /* Center horizontally */
+    height: 100vh;  /* Full viewport height */
+    text-align: center;  /* Center text */
+  }
+  
+  /* Center Section */
+  .center-section {
+    background-color: #ffffff; /* White background */
+    padding: 3rem 4rem;  /* Increased padding around the content */
+    border-radius: 10px;  /* Slightly rounded corners */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);  /* Deeper shadow for a more pronounced effect */
+  }
+  
+  /* Heading Styles */
+  .center-section h1 {
+    font-size: 4rem;  /* Larger title */
+    color: #0057b7;  /* Blue */
+    margin-bottom: 1rem;  /* Space below the title */
+  }
+  
+  /* Tagline Styles */
+  .tagline {
+    font-size: 1.5rem;  /* Larger font size for the tagline */
+    color: #0057b7;  /* Blue for consistency */
+    margin: 0.5rem 0 1rem;  /* Space around the tagline */
+  }
+  
+  /* Description Styles */
+  .center-section p {
+    font-size: 1.25rem;  /* Medium description */
+    color: #555;  /* Darker text for better readability */
+    margin-bottom: 2rem;  /* Space below the description */
+  }
+  
+  /* Button Styles */
+  .primary-button {
+    background-color: #0057b7; /* Blue */
+    color: #fff;  /* White text */
+    padding: 0.8rem 2.5rem;  /* Slightly larger padding */
+    font-size: 1.1rem;  /* Slightly larger font size */
+    border: none;  /* No border */
+    border-radius: 5px;  /* Rounded corners */
+    cursor: pointer;  /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth background color and transform */
+  }
+  
+  .primary-button:hover {
+    background-color: #ff0000; /* Change to red on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+  
+  /* Footer Styles (Optional) */
+  .landing-footer {
+    background-color: #0057b7; /* Blue */
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+  }
+  

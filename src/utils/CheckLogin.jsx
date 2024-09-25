@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
-const ProtectedRoutes = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(null); // State to track if the user is authenticated
+const useCheckLogin = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -17,10 +16,8 @@ const ProtectedRoutes = () => {
                 .then(response => response.json())
                 .then(data => {
                     if (!data.message) {
-
                         setIsAuthenticated(true);
                     } else {
-
                         localStorage.removeItem('token');
                         setIsAuthenticated(false);
                     }
@@ -34,12 +31,7 @@ const ProtectedRoutes = () => {
         }
     }, []);
 
-
-    if (isAuthenticated === null) {
-        return <div>Loading...</div>;
-    }
-
-    return isAuthenticated ? <Outlet /> : <Navigate to="login" />;
+    return isAuthenticated;
 }
 
-export default ProtectedRoutes;
+export default useCheckLogin;

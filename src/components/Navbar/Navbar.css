@@ -17,6 +17,7 @@ nav {
   width: 100%;
   padding: 20px;
   transition: all 0.4s ease;
+  z-index: 999;
 
 }
 
@@ -46,7 +47,7 @@ nav .logo a {
   width: 140px;
   height: 160px;
   left: -20px;
-  top: -8px;
+  top: -12px;
   position: absolute;
   overflow-y: hidden;
 }
