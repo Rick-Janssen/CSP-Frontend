@@ -96,10 +96,6 @@ const ProductList = () => {
                     </div>
                 ))}
             </div>
-
-            <footer>
-                <p>&copy; 2024 Product Rating Site. All rights reserved.</p>
-            </footer>
         </div>
     );
 };
