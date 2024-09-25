@@ -48,12 +48,15 @@ const DetailsPage = () => {
       })
       .then(data => {
         console.log('Review submitted successfully:', data);
+        // Reset the review and rating inputs
+        setReview(''); // Clear the review textarea
+        setRating(0); // Reset the rating to 0
+        fetchProductDetails(); // Optionally refresh product details to include the new review
       })
       .catch(error => {
         console.error('Error submitting review:', error);
       });
   };
-
 
   return (
     <div className='product-details'>
@@ -83,11 +86,14 @@ const DetailsPage = () => {
             placeholder="Write a review"
             className="review-textarea"
           />
-          <input type="number" min={0} max={5}
+          <input
+            type="number"
+            min={0}
+            max={5}
             value={rating}
-            onChange={(e) => setRating(e.target.value)} />
+            onChange={(e) => setRating(e.target.value)}
+          />
           <div className="rating-footer">
-            {/* {'★'.repeat(averageRating)}{'☆'.repeat(5 - review.rating)} */}
             <button type="submit" className="submit-button">SUBMIT</button>
           </div>
         </form>
