@@ -89,7 +89,7 @@ const ProductList = () => {
 
             <div id="product-list">
                 {filteredProducts.map(product => (
-                       <ProductCard id={product.id} image={product.image_url} name={product.name} type={product.origin} country={product.type} stars={product.rating} />
+                       <ProductCard id={product.id} image={product.image_url} name={product.name} type={product.type} country={product.origin} stars={product.rating} />
                     // <div
                     //     key={product.id}
                     //     className="product"
