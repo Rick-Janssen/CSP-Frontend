@@ -106,6 +106,7 @@ const DetailsPage = () => {
             product.reviews.map((review, index) => (
               <div className="review" key={index}>
                 {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                <span style={{ float: 'right' }} >{review.user_id || "Anonymous"}</span>
                 <p>{review.content}</p>
               </div>
             ))
