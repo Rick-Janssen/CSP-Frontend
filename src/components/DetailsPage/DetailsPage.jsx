@@ -9,7 +9,7 @@ const DetailsPage = () => {
   const [rating, setRating] = useState(0); // Default rating
 
   const fetchProductDetails = () => {
-    fetch(`http://192.168.45.164/csp-backend/product/${id}`)
+    fetch(`http://localhost/csp-backend/product/${id}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -33,7 +33,7 @@ const DetailsPage = () => {
       rating: rating,
     };
 
-    fetch(`http://192.168.45.164/csp-backend/product/${id}/review`, {
+    fetch(`http://localhost/csp-backend/product/${id}/review`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
