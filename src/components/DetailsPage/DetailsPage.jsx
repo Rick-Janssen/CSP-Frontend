@@ -14,6 +14,7 @@ const DetailsPage = () => {
     fetch(`http://localhost/csp-backend/product/${id}`)
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         setProduct(data);
       })
       .catch(error => {
@@ -53,36 +54,10 @@ const DetailsPage = () => {
         setReview(''); // Clear the review textarea
         setRating(0); // Reset the rating to 0
         fetchProductDetails(); // Optionally refresh product details to include the new review
-        setReview('');
-        setRating(0);
-        setHoverRating(0); // Reset hover rating as well
       })
       .catch(error => {
         console.error('Error submitting review:', error);
       });
-  };
-
-  const updateRating = (newRating) => {
-    setRating(newRating);
-  };
-
-  const highlightStars = (hoverRating) => {
-    setHoverRating(hoverRating);
-  };
-
-  const resetHighlight = () => {
-    setHoverRating(rating);
-  };
-
-  const getStarImage = (index) => {
-    const starRating = index + 1;
-    if (hoverRating >= starRating) {
-      return Star; // Full star
-    } else if (hoverRating >= starRating - 0.5) {
-      return StarHalf; // Half star
-    } else {
-      return StarEmpty; // Empty star
-    }
   };
 
   return (
@@ -113,30 +88,16 @@ const DetailsPage = () => {
             placeholder="Write a review"
             className="review-textarea"
           />
-          <div className="rating-container">
-            <div className="stars">
-              {[...Array(5)].map((_, index) => (
-                <div key={index} className="star" style={{ backgroundImage: `url(${getStarImage(index)})` }}>
-                  <div
-                    className="half-left"
-                    onMouseOver={() => highlightStars(index + 0.5)}
-                    onMouseOut={resetHighlight}
-                    onClick={() => updateRating(index + 0.5)}
-                    
-                  />
-                  <div
-                    className="half-right"
-                    onMouseOver={() => highlightStars(index + 1)}
-                    onMouseOut={resetHighlight}
-                    onClick={() => updateRating(index + 1)}
-                    
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="rating-value">{hoverRating.toFixed(1)}</div>
+          <input
+            type="number"
+            min={0}
+            max={5}
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+          />
+          <div className="rating-footer">
+            <button type="submit" className="submit-button">SUBMIT</button>
           </div>
-          <button type="submit" className="submit-button">SUBMIT</button>
         </form>
       </div>
       <h2>OTHER REVIEWS</h2>
