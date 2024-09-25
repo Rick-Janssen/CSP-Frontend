@@ -33,7 +33,7 @@ const DetailsPage = () => {
     e.preventDefault();
 
     const newReview = {
-      content: reviewContent,
+      content: review,
       rating: rating,
       productId: id,
     };
@@ -78,7 +78,7 @@ const DetailsPage = () => {
 
       <div className='product-card'>
         <div className="reviews">
-          <h2>OTHER REVIEWS</h2>
+          {/* <h2>OTHER REVIEWS</h2>
           {reviews.length > 0 ? (
             reviews.map((review, index) => (
               <div className="review" key={index}>
@@ -91,7 +91,7 @@ const DetailsPage = () => {
             ))
           ) : (
             <p>No reviews yet.</p>
-          )}
+          )} */}
         </div>
       </div>
 
