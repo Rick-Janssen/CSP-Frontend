@@ -5,11 +5,15 @@
     margin: 0 auto;
     width: min-content;
     padding-top: 10vh;
-    gap: 10vw;
+  
 }
 .Header{
     height: 100vh;
     background-color: #ffff;
+    margin-top: 4200px;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .imageContainer{
     display: flex;
