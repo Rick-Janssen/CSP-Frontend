@@ -3,17 +3,17 @@ import './ProductList.css';
 import ProductCard from "../ProductCard/ProductCard";
 import Footer from '../Footer/Footer';
 const ProductList = () => {
-    const [products, setProducts] = useState([]); 
-    const [filteredProducts, setFilteredProducts] = useState([]); 
-    const [searchQuery, setSearchQuery] = useState(''); 
-    const [typeFilter, setTypeFilter] = useState('all'); 
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [typeFilter, setTypeFilter] = useState('all');
 
     const fetchProducts = async () => {
         try {
             const response = await fetch('http://localhost/csp-backend/products');
             const data = await response.json();
             setProducts(data);
-            setFilteredProducts(data); 
+            setFilteredProducts(data);
         } catch (error) {
             console.error('Error fetching products:', error);
         }
@@ -51,35 +51,36 @@ const ProductList = () => {
     return (
         <div>
             <div className="filter-container">
-            <div className="filter-section">
-                <input
-                    type="text"
-                    id="search-bar"
-                    placeholder="Search for products..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <div className="filter-buttons">
-                    <button onClick={() => setTypeFilter('all')}>All</button>
-                    <button onClick={() => setTypeFilter('Food')}>Food</button>
-                    <button onClick={() => setTypeFilter('Alcohol')}>Alcohol</button>
-                    <button onClick={() => setTypeFilter('Other')}>Other</button>
+                <div className="filter-section">
+                    <input
+                        type="text"
+                        id="search-bar"
+                        placeholder="Search for products..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    <div className="filter-buttons">
+                        <button onClick={() => setTypeFilter('all')}>All</button>
+                        <button onClick={() => setTypeFilter('Food')}>Food</button>
+                        <button onClick={() => setTypeFilter('Alcohol')}>Alcohol</button>
+                        <button onClick={() => setTypeFilter('Other')}>Other</button>
+                    </div>
                 </div>
             </div>
-            </div>
-        <div>
+            <div>
 
-            <div id="product-list">
-                {filteredProducts.map(product => (
-                    <ProductCard product={product} />
+                <div id="product-list">
+                    {filteredProducts.map(product => (
+                        <ProductCard product={product} />
 
                 ))}
                 
         <Footer />
             </div>
 
+            </div>
         </div>
-    </div>
+
     );
 };
 

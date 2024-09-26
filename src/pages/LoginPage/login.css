@@ -1,4 +1,4 @@
-    *{
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -87,4 +87,9 @@
 
     .forgot-password a:hover {
         text-decoration: underline;
+    }
+
+    .message {
+        color: red;
+        margin-bottom: 10px;
     }
