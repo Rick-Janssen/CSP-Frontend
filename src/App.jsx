@@ -11,8 +11,6 @@ import MostRatedPage from "./pages/MostRatedPage/MostRatedPage";
 import Navbar from "./components/Navbar/Navbar";
 
 const App = () => {
-
-  <Navbar />
   return (
     <>
       <Navbar />

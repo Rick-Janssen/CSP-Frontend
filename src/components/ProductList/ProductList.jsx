@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import './ProductList.css'; // Import your CSS styles
+import './ProductList.css';
 import ProductCard from "../ProductCard/ProductCard";
 const ProductList = () => {
-    const [products, setProducts] = useState([]); // State for all products
-    const [filteredProducts, setFilteredProducts] = useState([]); // State for filtered products
-    const [searchQuery, setSearchQuery] = useState(''); // State for search input
-    const [typeFilter, setTypeFilter] = useState('all'); // State for product type filter
+    const [products, setProducts] = useState([]); 
+    const [filteredProducts, setFilteredProducts] = useState([]); 
+    const [searchQuery, setSearchQuery] = useState(''); 
+    const [typeFilter, setTypeFilter] = useState('all'); 
 
-    // Function to fetch products from the backend
     const fetchProducts = async () => {
         try {
             const response = await fetch('http://localhost/csp-backend/products');
             const data = await response.json();
             setProducts(data);
-            setFilteredProducts(data); // Initialize filtered products
+            setFilteredProducts(data); 
         } catch (error) {
             console.error('Error fetching products:', error);
         }
     };
 
-    // Function to filter products based on search query and type
     const filterProducts = () => {
         let tempProducts = products;
 
-        // Filter by type
         if (typeFilter !== 'all') {
             tempProducts = tempProducts.filter(product =>
                 product.type && product.type.toLowerCase() === typeFilter.toLowerCase()
             );
         }
 
-        // Filter by search query
         if (searchQuery) {
             tempProducts = tempProducts.filter(product =>
                 (product.name && product.name.toLowerCase().includes(searchQuery)) ||
@@ -41,12 +37,10 @@ const ProductList = () => {
         setFilteredProducts(tempProducts);
     };
 
-    // Effect to fetch products on component mount
     useEffect(() => {
         fetchProducts();
     }, []);
 
-    // Effect to filter products whenever searchQuery or typeFilter changes
     useEffect(() => {
         filterProducts();
     }, [searchQuery, typeFilter, products]);
@@ -55,6 +49,7 @@ const ProductList = () => {
 
     return (
         <div>
+            <div className="filter-container">
             <div className="filter-section">
                 <input
                     type="text"
@@ -70,6 +65,8 @@ const ProductList = () => {
                     <button onClick={() => setTypeFilter('Other')}>Other</button>
                 </div>
             </div>
+            </div>
+        <div>
 
             <div id="product-list">
                 {filteredProducts.map(product => (
@@ -79,6 +76,7 @@ const ProductList = () => {
             </div>
 
         </div>
+    </div>
 
     );
 };

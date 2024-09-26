@@ -225,11 +225,8 @@ html {
   display: flex;
   flex-direction: column;
   max-height: 300px;
-  /* Set a maximum height for the reviews section */
   overflow-y: auto;
-  /* Enable vertical scrolling if content exceeds */
   width: 100%;
-  /* Ensure it doesn't exceed the width of the card */
 }
 
 .reviews-grid {
@@ -246,11 +243,12 @@ html {
 }
 
 .review {
-  background-color: #aaa7a7;
+  background-color: #ffffff;
   padding: 20px;
   margin-bottom: 10px;
   width: calc(33.33% - 10px);
   box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for Show More Button */
@@ -322,4 +320,12 @@ html {
 
 .half-right {
   right: 0;
+}
+
+.userName {
+  position: relative;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
 }

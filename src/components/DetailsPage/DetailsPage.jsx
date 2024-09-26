@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import './DetailsPage.css';
 import ReviewsContainer from '../ReviewsContainer/ReviewsContainer';
-
+import { Link } from 'react-router-dom';
 import Star from "../../assets/star-full.png";
 import StarEmpty from "../../assets/star-empty.png";
 import StarHalf from "../../assets/star-half.png";
+import useCheckLogin from '../../utils/CheckLogin';
 
 const DetailsPage = () => {
+  const isAuthenticated = useCheckLogin();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [review, setReview] = useState('');
@@ -113,46 +115,56 @@ const DetailsPage = () => {
             <p>Loading product details...</p>
           )}
 
-          <form onSubmit={handleSubmit} className="review-form">
-            <textarea
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-              placeholder="Write a review"
-              className="review-textarea"
-            />
+          {!isAuthenticated ? (
+            <Link to="/login" className="Formbutton">
+              Login to write a review
+            </Link>
+
+          ) : (
+
+            <form onSubmit={handleSubmit} className="review-form">
+              <textarea
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+                placeholder="Write a review"
+                className="review-textarea"
+              />
 
 
-            <div className="rating-container">
-              <div className="stars">
-                {[...Array(5)].map((_, index) => (
-                  <div key={index} className="star" style={{ backgroundImage: `url(${getStarImage(index)})` }}>
-                    <div
-                      className="half-left"
-                      onMouseOver={() => highlightStars(index + 0.5)}
-                      onMouseOut={resetHighlight}
-                      onClick={() => updateRating(index + 0.5)}
+              <div className="rating-container">
+                <div className="stars">
+                  {[...Array(5)].map((_, index) => (
+                    <div key={index} className="star" style={{ backgroundImage: `url(${getStarImage(index)})` }}>
+                      <div
+                        className="half-left"
+                        onMouseOver={() => highlightStars(index + 0.5)}
+                        onMouseOut={resetHighlight}
+                        onClick={() => updateRating(index + 0.5)}
 
-                    />
-                    <div
-                      className="half-right"
-                      onMouseOver={() => highlightStars(index + 1)}
-                      onMouseOut={resetHighlight}
-                      onClick={() => updateRating(index + 1)}
+                      />
+                      <div
+                        className="half-right"
+                        onMouseOver={() => highlightStars(index + 1)}
+                        onMouseOut={resetHighlight}
+                        onClick={() => updateRating(index + 1)}
 
-                    />
-                  </div>
-                ))}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="rating-value">{hoverRating.toFixed(1)}</div>
               </div>
-              <div className="rating-value">{hoverRating.toFixed(1)}</div>
-            </div>
 
 
 
-            <div className="rating-footer">
-              <button type="submit" className="submit-button">SUBMIT</button>
-            </div>
-          </form>
+              <div className="rating-footer">
+                <button type="submit" className="submit-button">SUBMIT</button>
+              </div>
+            </form>
+          )}
         </div>
+
+
         <h2>Reviews</h2>
         <div className="reviews">
           <ReviewsContainer callbackProp={getStarImage} reviews={product ? product.reviews : []} />
