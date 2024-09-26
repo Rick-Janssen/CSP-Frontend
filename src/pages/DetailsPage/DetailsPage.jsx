@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import './DetailsPage.css';
-import ReviewsContainer from '../ReviewsContainer/ReviewsContainer';
+import ReviewsContainer from '../../components/ReviewsContainer/ReviewsContainer';
 import { Link } from 'react-router-dom';
 import Star from "../../assets/star-full.png";
 import StarEmpty from "../../assets/star-empty.png";

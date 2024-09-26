@@ -55,7 +55,7 @@ function Navbar() {
               <Link to="/best_rated">Best Rated</Link>
             </li>
             <li>
-              <Link to="#">About us</Link>
+              <Link to="/about">About us</Link>
             </li>
             <li>
               {isAuthenticated ? (
