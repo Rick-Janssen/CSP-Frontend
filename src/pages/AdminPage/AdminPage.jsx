@@ -96,106 +96,114 @@ const AdminPage = () => {
 
     return (
         <>
-            <table style={{ width: "30%", margin: "auto", maxHeight: "100vh" }}>
-                <thead>
-                    <tr>
-                        <td>id</td>
-                        <td>name</td>
-                        <td>description</td>
-                        <td>image_url</td>
-                        <td>origin</td>
-                        <td>type</td>
-                        <td>actions</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((product) => (
-                        <tr key={product.id}>
-                            <td>{product.id}</td>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={product.name}
-                                    onChange={(e) => handleEdit(e, product.id, 'name')}
-                                    onBlur={() => handleSave(product.id)} // Save on blur
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={product.description}
-                                    onChange={(e) => handleEdit(e, product.id, 'description')}
-                                    onBlur={() => handleSave(product.id)} // Save on blur
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={product.image_url}
-                                    onChange={(e) => handleEdit(e, product.id, 'image_url')}
-                                    onBlur={() => handleSave(product.id)} // Save on blur
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={product.origin}
-                                    onChange={(e) => handleEdit(e, product.id, 'origin')}
-                                    onBlur={() => handleSave(product.id)} // Save on blur
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={product.type}
-                                    onChange={(e) => handleEdit(e, product.id, 'type')}
-                                    onBlur={() => handleSave(product.id)} // Save on blur
-                                />
-                            </td>
-                            <td>
-                                <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-            <h3>Add New Product</h3>
-            <form onSubmit={handleAddProduct}>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    value={newProduct.name}
-                    onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Description"
-                    value={newProduct.description}
-                    onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Image URL"
-                    value={newProduct.image_url}
-                    onChange={(e) => setNewProduct({ ...newProduct, image_url: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Origin"
-                    value={newProduct.origin}
-                    onChange={(e) => setNewProduct({ ...newProduct, origin: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Type"
-                    value={newProduct.type}
-                    onChange={(e) => setNewProduct({ ...newProduct, type: e.target.value })}
-                />
-                <button type="submit">Add Product</button>
-            </form>
+            <div className="navbar">
+                <h1>Admin Dashboard</h1>
+            </div>
+    
+            <div className="admin-container">
+                <div className="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>id</td>
+                                <td>name</td>
+                                <td>description</td>
+                                <td>image_url</td>
+                                <td>origin</td>
+                                <td>type</td>
+                                <td>actions</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {products.map((product) => (
+                                <tr key={product.id}>
+                                    <td>{product.id}</td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            value={product.name}
+                                            onChange={(e) => handleEdit(e, product.id, 'name')}
+                                            onBlur={() => handleSave(product.id)}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            value={product.description}
+                                            onChange={(e) => handleEdit(e, product.id, 'description')}
+                                            onBlur={() => handleSave(product.id)}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            value={product.image_url}
+                                            onChange={(e) => handleEdit(e, product.id, 'image_url')}
+                                            onBlur={() => handleSave(product.id)}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            value={product.origin}
+                                            onChange={(e) => handleEdit(e, product.id, 'origin')}
+                                            onBlur={() => handleSave(product.id)}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            value={product.type}
+                                            onChange={(e) => handleEdit(e, product.id, 'type')}
+                                            onBlur={() => handleSave(product.id)}
+                                        />
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+    
+                <h3>Add New Product</h3>
+                <form onSubmit={handleAddProduct}>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        value={newProduct.name}
+                        onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Description"
+                        value={newProduct.description}
+                        onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Image URL"
+                        value={newProduct.image_url}
+                        onChange={(e) => setNewProduct({ ...newProduct, image_url: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Origin"
+                        value={newProduct.origin}
+                        onChange={(e) => setNewProduct({ ...newProduct, origin: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Type"
+                        value={newProduct.type}
+                        onChange={(e) => setNewProduct({ ...newProduct, type: e.target.value })}
+                    />
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
         </>
-    );
+    );    
 };
 
 export default AdminPage;
