@@ -6,7 +6,6 @@ import Login from "./pages/LoginPage/Login";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import LandingPage from "./components/LandingComponent/LandingPage";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
-import ProductList from "./components/ProductList/ProductList";
 import MostRatedPage from "./pages/MostRatedPage/MostRatedPage";
 import Navbar from "./components/Navbar/Navbar";
 

@@ -15,7 +15,7 @@ const DetailsPage = () => {
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(0); // Default rating
   const [hoverRating, setHoverRating] = useState(0);
-  const [visibleReviews, setVisibleReviews] = useState(6); // Start by showing 6 reviews
+
 
   const fetchProductDetails = () => {
     fetch(`http://localhost/csp-backend/product/${id}`)
@@ -28,6 +28,9 @@ const DetailsPage = () => {
         console.error('Error fetching product details:', error);
       });
   };
+  useEffect(() => {
+    fetchProductDetails();
+  }, [id]);
   const updateRating = (newRating) => {
     setRating(newRating);
   };
@@ -51,9 +54,7 @@ const DetailsPage = () => {
     }
   };
 
-  useEffect(() => {
-    fetchProductDetails();
-  }, [id]);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
