@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import Logo from "../../assets/FlagFlaggyLogo.png";
-import useCheckLogin from '../../utils/CheckLogin'; // Adjust the import to match your file structure
+import useCheckLogin from '../../utils/CheckLogin';
+import useCheckAdmin from '../../utils/CheckAdmin';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
-  const isAuthenticated = useCheckLogin(); // Get authentication state
+  const isAuthenticated = useCheckLogin();
+  const isAdmin = useCheckAdmin();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,6 +69,13 @@ function Navbar() {
               ) : (
                 <Link to="/login" className="Formbutton">
                   Login
+                </Link>
+              )}
+            </li>
+            <li>
+              {isAdmin && (
+                <Link to="/admin">
+                  Admin
                 </Link>
               )}
             </li>
