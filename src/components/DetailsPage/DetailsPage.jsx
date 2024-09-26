@@ -6,7 +6,7 @@ import ReviewsContainer from '../ReviewsContainer/ReviewsContainer';
 import Star from "../../assets/star-full.png";
 import StarEmpty from "../../assets/star-empty.png";
 import StarHalf from "../../assets/star-half.png";
-import Navbar from "../../components/Navbar/Navbar";
+
 const DetailsPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -89,7 +89,6 @@ const DetailsPage = () => {
 
   return (
     <>
-      <Navbar />
       <div className='product-details'>
         <div className="product-card">
           {product ? (
