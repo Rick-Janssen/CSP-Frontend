@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../ProductList/ProductList.css';
-import ProductCard from '../ProductCard/ProductCard';
+import './MostRated.css';
+import ProductCard from "../ProductCard/ProductCard"; // Importing ProductCard
 
 const MostRated = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]); 
 
     // Function to fetch products from the backend
     const fetchProducts = async () => {
@@ -20,16 +20,16 @@ const MostRated = () => {
         fetchProducts();
     }, []);
 
-    // Sort the products by rating in descending order and select the top 10
+    // Sort the products by rating in descending order and select the top 8
     const topRatedProducts = products
         .sort((a, b) => b.rating - a.rating)
         .slice(0, 8);
 
     return (
         <div>
-            <div id="product-list">
+            <div id="Ratedproduct-list">
                 {topRatedProducts.map((product) => (
-                    <ProductCard product={product}/>
+                    <ProductCard key={product.id} product={product} />
                 ))}
             </div>
         </div>
