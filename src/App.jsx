@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
+import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import Register from "./pages/Login/Register";
 
@@ -17,6 +17,8 @@ import ProductList from "./components/ProductList/ProductList";
 import MostRatedPage from "./pages/MostRatedPage/MostRatedPage";
 
 const App = () => {
+
+  <Navbar />
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
