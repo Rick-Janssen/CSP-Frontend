@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../ProductList/ProductList.css';
+import ProductCard from '../ProductCard/ProductCard';
 
 const MostRated = () => {
     const [products, setProducts] = useState([]);
@@ -28,22 +29,7 @@ const MostRated = () => {
         <div>
             <div id="product-list">
                 {topRatedProducts.map((product) => (
-                    <div key={product.id} className="product">
-                        <img src={product.image_url} alt={product.name} />
-                        <div className="details">
-                            <h2>{product.name}</h2>
-                            <p><strong>Origin:</strong> {product.origin}</p>
-                            <p><strong>Type:</strong> {product.type}</p>
-                        </div>
-                        <div className="rating">
-                            {/* Render stars based on rating */}
-                            {Array.from({ length: 5 }, (_, index) => (
-                                <span key={index} className="star">
-                                    {index < product.rating ? '★' : '☆'}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+                    <ProductCard product={product}/>
                 ))}
             </div>
         </div>
