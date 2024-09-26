@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import '../ProductList/ProductList.css';
 
 const MostRated = () => {
-    const [products, setProducts] = useState([]); // No need to specify a type, just use an empty array
+    const [products, setProducts] = useState([]);
 
     // Function to fetch products from the backend
     const fetchProducts = async () => {
@@ -18,10 +19,15 @@ const MostRated = () => {
         fetchProducts();
     }, []);
 
+    // Sort the products by rating in descending order and select the top 10
+    const topRatedProducts = products
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 10);
+
     return (
         <div>
-            <div id="most-rated-list">
-                {products.map((product) => (
+            <div id="product-list">
+                {topRatedProducts.map((product) => (
                     <div key={product.id} className="product">
                         <img src={product.image_url} alt={product.name} />
                         <div className="details">
