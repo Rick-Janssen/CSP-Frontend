@@ -1,65 +1,53 @@
-.ProductCard {
-  margin-left: 20px;
-  margin-right: 20px;
-  width: 200px;
-  background-color: #fff;
-  border-radius: 11px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  padding: 11px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
-
-.ProductCard:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-}
-
-.image-box {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-description {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  font-style: italic;
-}
-
-.product-showcase {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  max-width: 1320px;
-  margin: 44px auto;
-  padding: 22px;
-  border-radius: 11px;
-}
-
-.product-country {
-  text-align: right;
-}
-
-.product-hr {
-  margin-top: 4px;
-  background-color: #333;
-}
-
-.product-info {
-  display: flex;
-  justify-content: space-between;
-  color: #333;
-}
-
-img {
-  max-height: 200px;
-  max-width: 200px;
-  object-fit: contain;
-}
-
-a {
+.ProductCard{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 11px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 11px;
+  } .image-box{
+    height: 200px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } .product-description{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-style: italic;
+  }
+  .product-showcase {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+ 
+    max-width: 1320px; 
+    margin: 44px auto; 
+    padding: 22px; 
+    border-radius: 11px; 
+  }
+  .product-country{
+    text-align: right;
+  }
+  .product-hr{
+   
+   margin-top: 4px;
+    background-color: #333;
+  }
+  .product-info{
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+  }
+  img{
+    max-height: 200px;
+    max-width: 200px;
+   
+    object-fit:contain;
+  }
+a{
   text-decoration: none;
   color: black;
 }
