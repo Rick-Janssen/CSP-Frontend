@@ -8,6 +8,7 @@ import LandingPage from "./components/LandingComponent/LandingPage";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import MostRatedPage from "./pages/MostRatedPage/MostRatedPage";
 import Navbar from "./components/Navbar/Navbar";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/most_rated" element={<MostRatedPage />} />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/product/:id" element={<DetailsPage />} />
         <Route path="/" element={<LandingPage />} />
         <Route element={<ProtectedRoutes />} />
