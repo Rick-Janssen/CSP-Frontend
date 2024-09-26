@@ -22,7 +22,7 @@ const MostRated = () => {
     // Sort the products by rating in descending order and select the top 10
     const topRatedProducts = products
         .sort((a, b) => b.rating - a.rating)
-        .slice(0, 10);
+        .slice(0, 8);
 
     return (
         <div>
