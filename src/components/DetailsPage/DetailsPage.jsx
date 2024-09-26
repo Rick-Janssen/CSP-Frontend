@@ -62,10 +62,13 @@ const DetailsPage = () => {
       rating: rating,
     };
 
+    const token = localStorage.getItem('token'); // Get token from localStorage
+
     fetch(`http://localhost/csp-backend/product/${id}/review`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // Include token in Authorization header
       },
       body: JSON.stringify(newReview),
     })
@@ -86,6 +89,7 @@ const DetailsPage = () => {
         console.error('Error submitting review:', error);
       });
   };
+
 
   return (
     <>
@@ -149,7 +153,7 @@ const DetailsPage = () => {
             </div>
           </form>
         </div>
-        <h2>OTHER REVIEWS</h2>
+        <h2>Reviews</h2>
         <div className="reviews">
           <ReviewsContainer callbackProp={getStarImage} reviews={product ? product.reviews : []} />
         </div>
