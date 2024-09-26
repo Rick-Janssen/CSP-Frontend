@@ -4,10 +4,10 @@ import React from "react";
 function HomePage() {
 
   return (
-    (<React.Fragment >
+    <React.Fragment >
       <ProductList />
     </React.Fragment>
-    )
+
 
 
 
