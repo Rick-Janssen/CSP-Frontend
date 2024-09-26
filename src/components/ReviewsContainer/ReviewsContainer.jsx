@@ -37,6 +37,8 @@ const ReviewsContainer = ({ reviews }) => {
                 />
               ))}
             </div>
+            <span style={{ float: "right" }} >{review.user_name || "Anonymous"}</span>
+
             <p>{review.content}</p>
           </div>
         ))}

@@ -11,9 +11,11 @@ import MostRatedPage from "./pages/MostRatedPage/MostRatedPage";
 import Navbar from "./components/Navbar/Navbar";
 
 const App = () => {
+
+  <Navbar />
   return (
     <>
-    <Navbar />
+      <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -21,8 +23,8 @@ const App = () => {
         <Route path="/best_rated" element={<MostRatedPage />} />
         <Route path="/product/:id" element={<DetailsPage />} />
         <Route path="/" element={<LandingPage />} />
-        <Route element={<ProtectedRoutes />}/>
-          {/* <Route path="/admin" element={<Admin />} /> */}
+        <Route element={<ProtectedRoutes />} />
+        {/* <Route path="/admin" element={<Admin />} /> */}
       </Routes>
     </>
 
