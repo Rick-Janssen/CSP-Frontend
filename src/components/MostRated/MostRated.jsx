@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../ProductList/ProductList.css';
+import './MostRated.css';
+import ProductCard from "../ProductCard/ProductCard"; // Importing ProductCard
 
 const MostRated = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]); 
 
     // Function to fetch products from the backend
     const fetchProducts = async () => {
@@ -19,31 +20,16 @@ const MostRated = () => {
         fetchProducts();
     }, []);
 
-    // Sort the products by rating in descending order and select the top 10
+    // Sort the products by rating in descending order and select the top 8
     const topRatedProducts = products
         .sort((a, b) => b.rating - a.rating)
         .slice(0, 8);
 
     return (
         <div>
-            <div id="product-list">
+            <div id="Ratedproduct-list">
                 {topRatedProducts.map((product) => (
-                    <div key={product.id} className="product">
-                        <img src={product.image_url} alt={product.name} />
-                        <div className="details">
-                            <h2>{product.name}</h2>
-                            <p><strong>Origin:</strong> {product.origin}</p>
-                            <p><strong>Type:</strong> {product.type}</p>
-                        </div>
-                        <div className="rating">
-                            {/* Render stars based on rating */}
-                            {Array.from({ length: 5 }, (_, index) => (
-                                <span key={index} className="star">
-                                    {index < product.rating ? '★' : '☆'}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+                    <ProductCard key={product.id} product={product} />
                 ))}
             </div>
         </div>

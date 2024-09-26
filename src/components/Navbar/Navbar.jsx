@@ -52,7 +52,7 @@ function Navbar() {
               <Link to="/home">Products</Link>
             </li>
             <li>
-              <Link to="/best_rated">Best Rated</Link>
+              <Link to="/most_rated">Most Rated</Link>
             </li>
             <li>
               <Link to="#">About us</Link>
