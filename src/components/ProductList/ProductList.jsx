@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ProductList.css';
 import ProductCard from "../ProductCard/ProductCard";
+import Footer from '../Footer/Footer';
 const ProductList = () => {
     const [products, setProducts] = useState([]); 
     const [filteredProducts, setFilteredProducts] = useState([]); 
@@ -73,11 +74,12 @@ const ProductList = () => {
                     <ProductCard product={product} />
 
                 ))}
+                
+        <Footer />
             </div>
 
         </div>
     </div>
-
     );
 };
 

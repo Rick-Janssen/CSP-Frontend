@@ -17,17 +17,20 @@ const DetailsPage = () => {
   const [hoverRating, setHoverRating] = useState(0);
   const [visibleReviews, setVisibleReviews] = useState(6); // Start by showing 6 reviews
 
+  // State for the popup
+  const [isFlagged, setIsFlagged] = useState(false); 
+  const [flaggedMessage, setFlaggedMessage] = useState(''); 
   const fetchProductDetails = () => {
     fetch(`http://localhost/csp-backend/product/${id}`)
       .then(response => response.json())
       .then(data => {
-
         setProduct(data);
       })
       .catch(error => {
         console.error('Error fetching product details:', error);
       });
   };
+
   const updateRating = (newRating) => {
     setRating(newRating);
   };
@@ -59,38 +62,46 @@ const DetailsPage = () => {
     e.preventDefault();
 
     const newReview = {
-      product_id: id,
-      content: review,
-      rating: rating,
+        product_id: id,
+        content: review,
+        rating: rating,
     };
 
     const token = localStorage.getItem('token'); // Get token from localStorage
 
     fetch(`http://localhost/csp-backend/product/${id}/review`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` // Include token in Authorization header
-      },
-      body: JSON.stringify(newReview),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Include token in Authorization header
+        },
+        body: JSON.stringify(newReview),
     })
-      .then(response => {
+    .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+            throw new Error('Network response was not ok');
         }
         return response.json();
-      })
-      .then(data => {
-        console.log('Review submitted successfully:', data);
-        // Reset the review and rating inputs
-        setReview(''); // Clear the review textarea
-        setRating(0); // Reset the rating to 0
-        fetchProductDetails(); // Optionally refresh product details to include the new review
-      })
-      .catch(error => {
+    })
+    .then(data => {
+        console.log('Response from server:', data); // Log the response
+
+        if (data.flagged) {
+            // Show popup if the review is flagged
+            setIsFlagged(true);
+            setFlaggedMessage(data.message);
+        } else {
+            console.log('Review submitted successfully:', data);
+            setReview('');  // Clear the review input
+            setRating(0);  // Reset the rating
+            fetchProductDetails();  // Optionally refresh product details to include the new review
+            setIsFlagged(false);  // Hide popup if the review is not flagged
+        }
+    })
+    .catch(error => {
         console.error('Error submitting review:', error);
-      });
-  };
+    });
+};
 
 
   return (
@@ -105,8 +116,8 @@ const DetailsPage = () => {
                   <h1 className="title">{product.name}</h1>
                 </div>
                 <div className='type'>
-                  <p>Type: {product.type}</p>
-                  <p>Country: {product.origin}</p>
+                  <p><strong>Type: </strong>{product.type}</p>
+                  <p><strong>Country:</strong> {product.origin}</p>
                 </div>
                 <p className="description">{product.description}</p>
               </div>
@@ -119,9 +130,7 @@ const DetailsPage = () => {
             <Link to="/login" className="Formbutton">
               Login to write a review
             </Link>
-
           ) : (
-
             <form onSubmit={handleSubmit} className="review-form">
               <textarea
                 value={review}
@@ -129,7 +138,6 @@ const DetailsPage = () => {
                 placeholder="Write a review"
                 className="review-textarea"
               />
-
 
               <div className="rating-container">
                 <div className="stars">
@@ -140,14 +148,12 @@ const DetailsPage = () => {
                         onMouseOver={() => highlightStars(index + 0.5)}
                         onMouseOut={resetHighlight}
                         onClick={() => updateRating(index + 0.5)}
-
                       />
                       <div
                         className="half-right"
                         onMouseOver={() => highlightStars(index + 1)}
                         onMouseOut={resetHighlight}
                         onClick={() => updateRating(index + 1)}
-
                       />
                     </div>
                   ))}
@@ -155,27 +161,27 @@ const DetailsPage = () => {
                 <div className="rating-value">{hoverRating.toFixed(1)}</div>
               </div>
 
-
-
               <div className="rating-footer">
                 <button type="submit" className="submit-button">SUBMIT</button>
               </div>
+
+              {isFlagged && (
+                <div className="popup-message">
+                    <p>{flaggedMessage}</p>
+                    <button onClick={() => setIsFlagged(false)}>Close</button>
+                </div>
+            )}
             </form>
           )}
         </div>
-
 
         <h2>Reviews</h2>
         <div className="reviews">
           <ReviewsContainer callbackProp={getStarImage} reviews={product ? product.reviews : []} />
         </div>
-
       </div>
     </>
   );
 };
 
 export default DetailsPage;
-
-
-
