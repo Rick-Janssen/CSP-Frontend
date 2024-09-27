@@ -193,10 +193,7 @@ function AboutUs() {
         )}
     </div>
 
-      {/* Bottom Section */}
-      <div className="footer">
-        <p>Footer or Call to Action Section</p>
-      </div>
+      
     </div>
   );
 }

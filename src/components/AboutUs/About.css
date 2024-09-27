@@ -7,7 +7,7 @@
     margin: 0;
   }
   .header{
-    margin-top: 650px;
+  
   }
   .container {
     width: 100%;
@@ -109,7 +109,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 20px 0;
-    margin-top: 650px;
+
   }
   
   .header .logo {
@@ -220,4 +220,6 @@
     max-width:450px ;
     max-height: 350px; /* Ensures the image covers the container while maintaining aspect ratio */
 }
-  
+.product-details{
+  margin-top: 650px
+}
