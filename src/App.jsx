@@ -8,12 +8,14 @@ import LandingPage from "./components/LandingComponent/LandingPage";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import MostRatedPage from "./pages/MostRatedPage/MostRatedPage";
 import Navbar from "./components/Navbar/Navbar";
+import AboutUs from "./components/AboutUs/About";
 
 const App = () => {
   return (
     <>
       <Navbar />
       <Routes>
+        <Route path="/about" element={<AboutUs/>}/> 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<HomePage />} />
