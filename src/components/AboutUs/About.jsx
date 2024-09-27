@@ -18,6 +18,8 @@ import Lana from "../../assets/lana.png";
 
 // import Slika6 from '../../';
 
+import Slika6 from '../../assets/aboutus5.jpg';
+import Slika7 from '../../assets/aboutus7.png';
 
 function AboutUs() {
   const [slideIndex, setSlideIndex] = useState(1);
@@ -109,22 +111,22 @@ function AboutUs() {
         <div className="logo">
           {/* Full-width image slides inside the logo section */}
           <div className="mySlides">
-            <img src={Slika1} alt="Woods" />
+            <img src={Slika1}  alt="Fighting" />
           </div>
           <div className="mySlides">
-            <img src={Slika2} alt="Cinque Terre" />
+            <img src={Slika7} alt="Having fun" />
           </div>
           <div className="mySlides">
-            <img src={Slika3} alt="Mountains and fjords" />
+            <img src={Slika3}  alt="Planning the layout" />
           </div>
           <div className="mySlides">
-            <img src={Slika4} alt="Northern Lights" />
+            <img src={Slika4}  alt="The layout" />
           </div>
           <div className="mySlides">
-            <img src={Slika5} alt="Nature and sunrise" />
+            <img src={Slika5} alt="Struggling" />
           </div>
           <div className="mySlides">
-            <img alt="Snowy Mountains" />
+            <img src={Slika6} alt="More struggling" />
           </div>
 
           {/* Next and Previous Buttons */}
@@ -139,36 +141,36 @@ function AboutUs() {
 
         <div className="content">
           <h1>About us</h1>
-          <p>This is the header section with some content.</p>
+          <p></p>
         </div>
       </div>
 
       {/* Navigation/Icons with Thumbnails */}
       <div className="nav-icons">
         <div className="icon">
-          <img className="demo cursor" src={Slika1} onClick={() => currentSlide(1)} alt="The Woods" />
+          <img className="demo cursor" src={Slika1} onClick={() => currentSlide(1)} alt="Fighting" />
         </div>
         <div className="icon">
-          <img className="demo cursor" src={Slika2} onClick={() => currentSlide(2)} alt="Cinque Terre" />
+          <img className="demo cursor" src={Slika7}  onClick={() => currentSlide(2)} alt="Having fun" />
         </div>
         <div className="icon">
-          <img className="demo cursor" src={Slika3} onClick={() => currentSlide(3)} alt="Mountains and fjords" />
+          <img className="demo cursor"  src={Slika3} onClick={() => currentSlide(3)} alt="Planning the layout" />
         </div>
         <div className="icon">
-          <img className="demo cursor" src={Slika4} onClick={() => currentSlide(4)} alt="Northern Lights" />
+          <img className="demo cursor" src={Slika4}  onClick={() => currentSlide(4)} alt="The layout" />
         </div>
         <div className="icon">
-          <img className="demo cursor" src={Slika5} onClick={() => currentSlide(5)} alt="Nature and sunrise" />
+          <img className="demo cursor" src={Slika5} onClick={() => currentSlide(5)} alt="Struggling" />
         </div>
         <div className="icon">
-          <img className="demo cursor" onClick={() => currentSlide(6)} alt="Snowy Mountains" />
+          <img className="demo cursor" src={Slika6} onClick={() => currentSlide(6)} alt="More struggling" />
         </div>
       </div>
 
       {/* Main Content Section */}
       <div className="main-content">
         <div className="item">We are a dynamic team of 10 passionate students—5 from Croatia and 5 from the Netherlands—united by our love for exploring and sharing the best of what our countries have to offer. Our mission is simple: to create a space where you can discover, rate, and review products from both Croatia and the Netherlands, without the pressure to buy.</div>
-        <div className="item">At Rater, we believe in the power of community-driven insights, so your voice truly makes a difference!</div>
+        <div className="item middle">At Rater, we believe in the power of community-driven insights, so your voice truly makes a difference!</div>
         <div className="item">From tech gadgets to local specialties, Rater brings together diverse products for you to experience through the opinions of everyday users. Whether you're curious about something new or have a favorite item you want to rave about, this is the place to share your honest feedback and help others make informed decisions.</div>
       </div>
 
@@ -189,7 +191,7 @@ function AboutUs() {
             <div className="feature-text">{creator.name}</div>
           </div>
         )}
-      </div>
+s      </div>
 
       {/* Bottom Section */}
       <div className="footer">

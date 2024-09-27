@@ -5,9 +5,10 @@
   body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding-top: 500px;
   }
-  
+  .header{
+    margin-top: 650px;
+  }
   .container {
     width: 100%;
     max-width: 1100px;
@@ -41,7 +42,7 @@
     top: 40%;
     width: auto;
     padding: 16px;
-    margin-top: -50px;
+    margin-top: -10px;
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -108,10 +109,11 @@
     justify-content: space-around;
     align-items: center;
     padding: 20px 0;
+    margin-top: 650px;
   }
   
   .header .logo {
-    width: 450px;
+    width: 400px;
     height: 350px;
     background-color: #ddd;
     position: relative;
@@ -160,6 +162,11 @@
     text-indent: 20px;
     word-spacing: 5px;
     padding: 20px;
+    font-size: 17px;
+  }
+
+  .middle{
+    font-size: 22px;
   }
   
   /* Quote/Testimonial */
