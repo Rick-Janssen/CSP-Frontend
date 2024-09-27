@@ -12,7 +12,7 @@
   .container {
     width: 100%;
     max-width: 1100px;
-    margin: 0 auto;
+    margin-top: 100vh;
     padding: 20px;
     position: relative; /* Ensure the relative positioning for slides */
   }
@@ -221,5 +221,5 @@
     max-height: 350px; /* Ensures the image covers the container while maintaining aspect ratio */
 }
 .product-details{
-  margin-top: 650px
+    
 }
