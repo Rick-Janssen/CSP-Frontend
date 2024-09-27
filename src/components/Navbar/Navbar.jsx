@@ -3,7 +3,7 @@ import './Navbar.css';
 import Logo from "../../assets/FlagFlaggyLogo.png";
 import useCheckLogin from '../../utils/CheckLogin';
 import useCheckAdmin from '../../utils/CheckAdmin';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
@@ -21,7 +21,6 @@ function Navbar() {
     };
   }, []);
 
-
   const logout = () => {
     fetch('http://localhost/csp-backend/logout', {
       method: 'POST',
@@ -34,7 +33,6 @@ function Navbar() {
         console.log(data.message);
 
         if (data.message === "Logged out successfully") {
-
           localStorage.removeItem('token');
         }
         window.location.href = '/home';
@@ -47,36 +45,34 @@ function Navbar() {
         <img className="LogoPng" src={Logo} alt="Logo" />
         <div className="nav-content">
           <div className="logo">
-            <Link to="/home">Rater</Link>
+            <NavLink to="/home" exact activeClassName="active-link">Rater</NavLink>
           </div>
           <ul className="nav-links">
             <li>
-              <Link to="/home">Products</Link>
+              <NavLink to="/home" activeClassName="active-link">Products</NavLink>
             </li>
             <li>
-              <Link to="/most_rated">Most Rated</Link>
+              <NavLink to="/most_rated" activeClassName="active-link">Most Rated</NavLink>
             </li>
             <li>
-              <Link to="/about">About us</Link>
+              <NavLink to="/about" activeClassName="active-link">About us</NavLink>
             </li>
             <li>
               {isAuthenticated ? (
-                <Link onClick={logout} className="Formbutton">
+                <NavLink to="#" onClick={logout} className="Formbutton">
                   Logout
-
-
-                </Link>
+                </NavLink>
               ) : (
-                <Link to="/login" className="Formbutton">
+                <NavLink to="/login" className="Formbutton">
                   Login
-                </Link>
+                </NavLink>
               )}
             </li>
             <li>
               {isAdmin && (
-                <Link to="/admin">
+                <NavLink to="/admin" activeClassName="active-link">
                   Admin
-                </Link>
+                </NavLink>
               )}
             </li>
           </ul>
