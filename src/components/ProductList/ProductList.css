@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
+    margin-bottom: 30px;
     padding: 0;
 }
 
@@ -17,15 +18,15 @@ h1 {
 
 .filter-container {
     position: absolute;
-    left: 50%;      /* Move to the center horizontally */
-    top: 15%;       /* Move to the center vertically */
-    transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+    left: 50%;      
+    top: 15%;       
+    transform: translate(-50%, -50%); 
 }
 
 .filter-section {
     position: relative;
     text-align: center;
-    margin-top: 20px; /* Adjust margin top if needed */
+    margin-top: 20px; 
 }
 
 .filter-section input {

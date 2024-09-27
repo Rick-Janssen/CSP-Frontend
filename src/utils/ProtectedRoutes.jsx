@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 
 const ProtectedRoutes = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(null); // State to track if the user is authenticated
+    const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication
+    const [isAdmin, setIsAdmin] = useState(false); // Track if the user is an admin
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -17,10 +18,12 @@ const ProtectedRoutes = () => {
                 .then(response => response.json())
                 .then(data => {
                     if (!data.message) {
-
                         setIsAuthenticated(true);
-                    } else {
 
+                        if (data.role === 'admin') {
+                            setIsAdmin(true);
+                        }
+                    } else {
                         localStorage.removeItem('token');
                         setIsAuthenticated(false);
                     }
@@ -34,12 +37,16 @@ const ProtectedRoutes = () => {
         }
     }, []);
 
-
     if (isAuthenticated === null) {
         return <div>Loading...</div>;
     }
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="login" />;
-}
+    return (
+        <>
+            {isAdmin ? <Outlet /> : <Navigate to="/home" />}
+            {/* You can now use isAdmin for specific admin routes */}
+        </>
+    );
+};
 
 export default ProtectedRoutes;
