@@ -5,11 +5,66 @@ import Slika2 from '../../assets/wallpaperflare.com_wallpaper (3).jpg';
 import Slika3 from '../../assets/aboutus2.jpg';
 import Slika4 from '../../assets/aboutus3.jpg';
 import Slika5 from '../../assets/aboutus4.jpg';
+import Timea from "../../assets/discorduser.png";
+import Timo from "../../assets/goat.png";
+import Justin from "../../assets/justin.png";
+import Yoran from "../../assets/ko.png";
+import Mario from "../../assets/mario.png";
+import Stipe from "../../assets/opetko.png";
+import Rick from "../../assets/rick.png";
+import Stefan from "../../assets/stefan.png";
+import Lea from "../../assets/who.png";
+import Lana from "../../assets/lana.png";
+
 // import Slika6 from '../../';
 
 
 function AboutUs() {
   const [slideIndex, setSlideIndex] = useState(1);
+
+  const creatorsInformation = [
+    {
+      img: Timea,
+      name: "Timea"
+    },
+    {
+      img: Timo,
+      name: "Timo"
+    },
+    {
+      img: Justin,
+      name: "Justin"
+    },
+    {
+      img: Yoran,
+      name: "Yoran"
+    },
+    {
+      img: Mario,
+      name: "Mario"
+    },
+    {
+      img: Stipe,
+      name: "Stipe"
+    },
+    {
+      img: Rick,
+      name: "Rick"
+    },
+    {
+      img: Stefan,
+      name: "Stefan"
+    },
+    {
+      img: Lea,
+      name: "Lea"
+    },
+    {
+      img: Lana,
+      name: "Lana"
+    }
+
+  ]
 
   const plusSlides = (n) => {
     showSlides(slideIndex + n);
@@ -54,16 +109,16 @@ function AboutUs() {
         <div className="logo">
           {/* Full-width image slides inside the logo section */}
           <div className="mySlides">
-            <img src={Slika1}  alt="Woods" />
+            <img src={Slika1} alt="Woods" />
           </div>
           <div className="mySlides">
             <img src={Slika2} alt="Cinque Terre" />
           </div>
           <div className="mySlides">
-            <img src={Slika3}  alt="Mountains and fjords" />
+            <img src={Slika3} alt="Mountains and fjords" />
           </div>
           <div className="mySlides">
-            <img src={Slika4}  alt="Northern Lights" />
+            <img src={Slika4} alt="Northern Lights" />
           </div>
           <div className="mySlides">
             <img src={Slika5} alt="Nature and sunrise" />
@@ -94,19 +149,19 @@ function AboutUs() {
           <img className="demo cursor" src={Slika1} onClick={() => currentSlide(1)} alt="The Woods" />
         </div>
         <div className="icon">
-          <img className="demo cursor" src={Slika2}  onClick={() => currentSlide(2)} alt="Cinque Terre" />
+          <img className="demo cursor" src={Slika2} onClick={() => currentSlide(2)} alt="Cinque Terre" />
         </div>
         <div className="icon">
-          <img className="demo cursor"  src={Slika3} onClick={() => currentSlide(3)} alt="Mountains and fjords" />
+          <img className="demo cursor" src={Slika3} onClick={() => currentSlide(3)} alt="Mountains and fjords" />
         </div>
         <div className="icon">
-          <img className="demo cursor" src={Slika4}  onClick={() => currentSlide(4)} alt="Northern Lights" />
+          <img className="demo cursor" src={Slika4} onClick={() => currentSlide(4)} alt="Northern Lights" />
         </div>
         <div className="icon">
           <img className="demo cursor" src={Slika5} onClick={() => currentSlide(5)} alt="Nature and sunrise" />
         </div>
         <div className="icon">
-          <img className="demo cursor"  onClick={() => currentSlide(6)} alt="Snowy Mountains" />
+          <img className="demo cursor" onClick={() => currentSlide(6)} alt="Snowy Mountains" />
         </div>
       </div>
 
@@ -123,21 +178,17 @@ function AboutUs() {
           "Dont be a hater, be a rater"
         </blockquote>
       </div>
-
+      <br />
+      <h2>Our Team</h2>
       {/* Footer Features */}
-      <div className="footer-features">
-        <div className="feature">
-          <div className="img-feature">Feature 1</div>
-          <div className="feature-text">asddfgdfg</div>
-        </div>
-        <div className="feature">
-          <div className="img-feature">Feature 2</div>
-          <div className="feature-text">asddfgdfg</div>
-        </div>
-        <div className="feature">
-          <div className="img-feature">Feature 3</div>
-          <div className="feature-text">asddfgdfg</div>
-        </div>
+      <div className="footer-features"> 
+        {creatorsInformation.map(creator => 
+          
+          <div className="feature">
+            <div className="img-feature"><img src={creator.img} alt={creator.name} className='img-feature'/></div>
+            <div className="feature-text">{creator.name}</div>
+          </div>
+        )}
       </div>
 
       {/* Bottom Section */}
