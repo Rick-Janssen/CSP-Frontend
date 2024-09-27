@@ -191,7 +191,7 @@ function AboutUs() {
             <div className="feature-text">{creator.name}</div>
           </div>
         )}
-s      </div>
+    </div>
 
       {/* Bottom Section */}
       <div className="footer">
